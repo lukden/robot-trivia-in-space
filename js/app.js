@@ -1,6 +1,6 @@
 /*-----------Constants----------*/
 
-import { quizCategories } from "../js-arrays/app.js"
+import { getQuiz } from "../js-arrays/quiz.js"
 
 /*-------------Variables-----------*/
 

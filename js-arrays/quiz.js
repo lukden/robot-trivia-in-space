@@ -202,5 +202,11 @@ const quizCategories = {
       b: ""
     },
   ],
+}
 
+function getQuiz() {
+  return quizCategories[Math.floor(Math.random() * quizCategories.length)]
+}
+export {
+  getQuiz
 }

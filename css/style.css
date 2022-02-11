@@ -1,11 +1,14 @@
 body {
   margin: 50px;
-  background-image: src="assets/images/space2.jpg";
+  background-image: url("../../assets/images/space2.jpg");
+  /* background-color: #cccccc; */
+  background-size: cover;
   text-align: center;
 }
 
 h1 {
   background-color: antiquewhite;
+  text-align: center;
 }
 
 h2 {
@@ -16,18 +19,21 @@ h2 {
 
 .quiz {
   display: grid;
-  grid-template-rows: 30px 120px 160px;
-  /* background-color: aqua; */
+  grid-template-rows: 30px 120px 190px;
   text-align: center;
-  width: 275px;
+  width: 280px;
   height: fit-content;
   padding-top: 80px;
+  text-align: center;
 }
 
 #questions {
   background-color: gray;
   position: relative;
   height: 30px;
+  /* border-radius: 5px; */
+  /* border-color: black;
+  border-width: 1px; */
 }
 
 #question {
@@ -42,28 +48,35 @@ h2 {
   height: 180px;
 }
 
-button, 
+
 .player-choice {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   position: relative;
-  padding-top: 30px;
-  width: 69px;
+  /* padding-top: 30px; */
+  /* width: 69px; */
   text-align: center;
 }
 
-/* .player-choice {
-  height: 30px;
-  width: 275px;
-} */
+.player-choice {
+  height: 40px;
+  width: 280px;
+  /* border-width: 20%; */
+}
 
 .submit {
   display: grid;
-  grid-template-columns: repeat (1, 1fr);
-  width: 175px;
+  grid-template-columns: 140px 140px;
   text-align: center;
-  height: 35px;
   position: relative;
-  padding-left: 50px;
+  background-color: bisque;
+  /* padding-left: 58px; */
   padding-top: 10px;
+  height: 50px;
+  width: 280px;
+}
+p,
+#game-status {
+  background-color: white;
+  /* font-size: */
 }
