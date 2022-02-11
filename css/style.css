@@ -1,6 +1,6 @@
 body {
   margin: 50px;
-  background-color: lightgray;
+  background-image: src="assets/images/space2.jpg";
   text-align: center;
 }
 
@@ -11,6 +11,7 @@ h1 {
 h2 {
   background-color: blue
 }
+
 
 
 .quiz {
