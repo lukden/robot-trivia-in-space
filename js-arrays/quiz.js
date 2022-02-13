@@ -209,7 +209,9 @@ const quizCategories = {
 function getQuiz() {
   return quizCategories[Math.floor(Math.random() * quizCategories.length)]
 }
+
 export {
   getQuiz
 }
 
+// console.log(quizCategories.scienceQuestions)

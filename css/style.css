@@ -18,8 +18,8 @@ h2 {
 
 
 .quiz {
-  display: grid;
-  grid-template-rows: 30px 120px 190px;
+  /* display: grid;
+  grid-template-rows: 30px 120px 190px; */
   text-align: center;
   width: 280px;
   height: fit-content;
@@ -37,7 +37,7 @@ h2 {
 }
 
 #question {
-  background-color: black;
+  background-color: white;
   position: relative;
   height: 150px;
 }
@@ -46,6 +46,8 @@ h2 {
   background-color: orange;
   position: relative;
   height: 180px;
+  display: grid;
+  grid-template-rows: 45px 45px 45px 45px;
 }
 
 
@@ -64,6 +66,7 @@ h2 {
   /* border-width: 20%; */
 }
 
+
 .submit {
   display: grid;
   grid-template-columns: 140px 140px;
@@ -79,4 +82,17 @@ p,
 #game-status {
   background-color: white;
   /* font-size: */
+}
+
+.card {
+  font-size: 20px;
+
+}
+
+#quiz-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
