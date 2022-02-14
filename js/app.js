@@ -210,50 +210,41 @@ import { getQuiz } from "../js-arrays/quiz.js"
   //   },
   // ],
 
-const scienceQuestions = [
-  "Which planet is the 3rd closest to the sun?",
-  "Scientists taught rats how to ______. Which option does NOT acurately finsh the sentence?",
-  "What is the country of origin of the first living creature sent into space?", "Dark matter matter makes up this percentage of all matter in the universe?"
+//
+
+const quizCategories = ["scienceQuestions", "popCulture", "images", "misc"]
+
+let scienceQuestions = [
+  {
+    question: "Which planet is the 3rd closest to the sun?",
+    choices: ["Mars", "Saturn", "Pluto", "Earth"],
+    correctAnswer: "Earth"
+  },
+  {
+    question: "Scientists taught rats how to ______. Which option does NOT acurately finsh the sentence?",
+    choices: ["Play Doom II",
+    "Drive tiny cars",
+    "Cook food",
+    "Find landmines"],
+    correctAnswer: "Cook food"
+  },
+  {
+    question: "What is the country of origin of the first living creature sent into space?",
+    choices: ["China",
+    "United States of America",
+    "Soviet Union",
+    "United Kingdom"],
+    correctAnswer: "Soviet Union"
+  },
+  {
+    question: "Dark matter matter makes up this percentage of all matter in the universe?",
+    choices: ["15%",
+    "27%",
+    "40%",
+    "53%"],
+    answer: "27%"
+  }
 ]
-
-const scienceChoices = [
-  ["a = Mars",
-  "b = Uranus",
-  "c = Saturn",
-  "d = Earth"],
-  ["a = Play Doom II",
-  "b = Drive tiny cars",
-  "c = Cook food",
-  "d = Find landmines"],
-  ["a = China",
-  "b = United States of America",
-  "c = Soviet Union",
-  "d = United Kingdom"],
-  ["a = 15%",
-  "b = 27%",
-  "c = 40%",
-  "d = 53%"]
-]
-
-const choicesA = ["A = Mars", "A = Play Doom II"
-
-]
-
-const choicesB = ["B = Uranus", "B = Drive tiny cars"]
-
-const choicesC = [
-  "C = Saturn", "C = Cook food"
-  
-]
-
-const choicesD = [
-  "D = Earth", "D = Find landmines"
-  
-]
-
-const answers = ["D = Earth", "C = Cook food"]
-
-
 
 
 
@@ -282,9 +273,12 @@ const answers = ["D = Earth", "C = Cook food"]
 
 // let win, lose, playerName, timer
 const quiz = []
+let correctAnswers = []
+let incorrectAnswers = []
 
 /*-------------Cached Element References----------*/
 
+const playerChoice = document.querySelector("player-choice")
 const aBtn = document.querySelector("#a-button")
 const bBtn = document.querySelector("#b-button")
 const cBtn = document.querySelector("#c-button")
@@ -326,7 +320,25 @@ dBtn.addEventListener("click", function (){
 // cBtn.addEventListener("click", logAnswer)
 // dBtn.addEventListener("click", logAnswer)
 
-submitBtn.addEventListener("click", createQuestion)
+submitBtn.addEventListener("click", playerChoice)
+
+// function finalizeAnswer() {
+//   if {
+//     aBtn = true;
+//     console.log(choicesA)
+//   }
+//   else if {
+//     bBtn = true;
+//     console.log(choicesB)
+//   }
+//   else if  {
+//     cBtn = true
+//     console.log(choicesC)
+//     else {
+//       console.log(choicesD)
+//     }
+//   }
+// }
 
 /*-----------functions-------------*/
 
@@ -372,4 +384,9 @@ submitBtn.addEventListener("click", createQuestion)
 //   render()
 // }
 
+
 // console.log(quizArr)
+
+function checkAnswer(){
+
+}
