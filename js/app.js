@@ -246,7 +246,20 @@ let scienceQuestions = [
   }
 ]
 
+for (let i = 0; i < scienceQuestions.length; i++){
+  if (scienceQuestions[i] === null) {
+    console.log(scienceQuestions.question) 
+  }
+  console.log(scienceQuestions)
+}
 
+// for (let i = 0; i < scienceQuestions.length; i++)
+// {
+//   if (scienceQuestions[i] === 0) {
+//     console.log(scienceQuestions.choices)
+//   }
+  // console.log(scienceQuestions)
+// }
 
 // console.log(scienceChoices[1])
 // const scienceChoices = {
@@ -272,9 +285,13 @@ let scienceQuestions = [
 /*-------------Variables-----------*/
 
 // let win, lose, playerName, timer
-const quiz = []
-let correctAnswers = []
-let incorrectAnswers = []
+
+let rightAnswers = []
+let wrongAnswers = []
+let pickedCategory = "scienceQuestions"
+
+let currentAnswer
+let currentCorrect
 
 /*-------------Cached Element References----------*/
 
@@ -288,16 +305,16 @@ const dBtn = document.querySelector("#d-button")
 const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
 const quizContainer = document.querySelector('#quiz-container')
-document.getElementById('question').innerHTML = scienceQuestions[0];
-document.getElementById('choices').innerHTML = 
-`<ul id="choices">
-<li id="a-q">${choicesA[0]}</li>
-<li id="b-q">${choicesB[0]}</li>
-<li id="c-q">${choicesC[0]}</li>
-<li id="d-q">${choicesD[0]}</li>
-</ul>`
+document.getElementById('question').innerHTML = scienceQuestions.question;
+// document.getElementById('choices').innerHTML = 
+// `<ul id="choices">
+// <li id="a-q">${choicesA[0]}</li>
+// <li id="b-q">${choicesB[0]}</li>
+// <li id="c-q">${choicesC[0]}</li>
+// <li id="d-q">${choicesD[0]}</li>
+// </ul>`
 
-console.log(choicesB[0])
+// console.log(choicesB[0])
 /*---------------Event Listeners---------*/
 
 aBtn.addEventListener("click", function (){
@@ -342,17 +359,19 @@ submitBtn.addEventListener("click", playerChoice)
 
 /*-----------functions-------------*/
 
-// init()
+init(
+  createQuestion()
+)
 
-// function createQuestion(evt) {
-//   const nextQuestion = evt.target.id === "submit"
-//   const newQuestion = {
-//     prompt: getQuiz(),
-//     choices: getQuiz()
-//   }
-//   quiz.push(newQuestion)
-//   render()
-// }
+function createQuestion(evt) {
+  const nextQuestion = evt.target.id === "submit"
+  const newQuestion = {
+    prompt: getQuiz(),
+    choices: getQuiz()
+  }
+  quiz.push(newQuestion)
+  render()
+}
 
 // function init(){
 // appendQuestion();
