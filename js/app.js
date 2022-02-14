@@ -307,18 +307,19 @@ const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
 // const quizContainer = document.querySelector('#quiz-container')
 const quiz = document.querySelectorAll(".quiz")
-document.getElementById('question').innerHTML = scienceQuestions.question;
+const qs = document.getElementById('question')
 const gameStatus = document.getElementById("game-status")
-
-console.log(quiz)
+const choicesArr = document.getElementById("choices")
+// console.log(quiz)
 // document.getElementById('choices').innerHTML = 
 // `<ul id="choices">
-// <li id="a-q">${choicesA[0]}</li>
-// <li id="b-q">${choicesB[0]}</li>
-// <li id="c-q">${choicesC[0]}</li>
-// <li id="d-q">${choicesD[0]}</li>
+// <li id="a-q">${scienceQuestions.choices.index}</li>
+// <li id="b-q">${scienceQuestions.choices}</li>
+// <li id="c-q">${scienceQuestions.choices}</li>
+// <li id="d-q">${scienceQuestions.choices}</li>
 // </ul>`
 
+// console.log(scienceQuestions.choices)
 // console.log(choicesB[0])
 /*---------------Event Listeners---------*/
 
@@ -366,7 +367,7 @@ submitBtn.addEventListener("click", playerChoice)
 let currentQuestion
 init();
 function init() {
-  quizArr = ["", "", ""]
+  quizArr = [null, null]
   winner = null
   currentQuestion = null
   gameStatus.textContent = "Choose a category to start!"
@@ -374,28 +375,32 @@ function init() {
 }
 
 function render() {
-  quizArr.forEach((box, index) => {
-  if (box === 0) {
-    quizArr[index].textContent = `${scienceQuestions.question}`
-  } else {
-    quizArr[index].textContent = null;
+  let q = scienceQuestions.question
+  let quizArr.innerHTML = {
+  question = `${q}`
   }
-})}
 
-quizArr.forEach(function (row){
-submitBtn.addEventListener('click', handleClick)})
 
-function handleClick(evt){
-  if(quiz[+(evt.target.id.replace("question",''))] !== null){
-    return
-  } else if(winner !== null){
-    return
-  } else {
-    quiz[+(evt.target.id.replace("question",''))] = turn
-  }
-  turn *= -1
-  render()
-}
+// quizArr.forEach(function (row){
+// submitBtn.addEventListener('click', handleClick)})
+
+// function handleClick(evt){
+//     const nextQuestion = evt.target.id === "submit"
+//   const newQuestion = {
+//     prompt: getQuiz(),
+//     choices: getQuiz()
+//   }
+//   quiz.push(newQuestion)
+//   render()
+  // if(quiz[+(evt.target.id.replace("question",''))] !== null){
+  //   return
+  // } else if(winner !== null){
+  //   return
+  // } else {
+  //   quiz[+(evt.target.id.replace("question",''))] ;
+  // }
+  // render()
+// }
 //   createQuestion()
 // )
 
