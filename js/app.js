@@ -289,9 +289,10 @@ for (let i = 0; i < scienceQuestions.length; i++){
 let rightAnswers = []
 let wrongAnswers = []
 let pickedCategory = "scienceQuestions"
-
+let winner
 let currentAnswer
 let currentCorrect
+let quizArr = []
 
 /*-------------Cached Element References----------*/
 
@@ -304,8 +305,12 @@ const dBtn = document.querySelector("#d-button")
 // const sumOfIncorrect = document.querySelector("sumIncorrect")
 const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
-const quizContainer = document.querySelector('#quiz-container')
+// const quizContainer = document.querySelector('#quiz-container')
+const quiz = document.querySelectorAll(".quiz")
 document.getElementById('question').innerHTML = scienceQuestions.question;
+const gameStatus = document.getElementById("game-status")
+
+console.log(quiz)
 // document.getElementById('choices').innerHTML = 
 // `<ul id="choices">
 // <li id="a-q">${choicesA[0]}</li>
@@ -318,19 +323,19 @@ document.getElementById('question').innerHTML = scienceQuestions.question;
 /*---------------Event Listeners---------*/
 
 aBtn.addEventListener("click", function (){
-  console.log(choicesA)
+  console.log("A")
 })
 
 bBtn.addEventListener("click", function (){
-  console.log(choicesB)
+  console.log("B")
 })
 
 cBtn.addEventListener("click", function (){
-  console.log(choicesC)
+  console.log("C")
 })
 
 dBtn.addEventListener("click", function (){
-  console.log(choicesD)
+  console.log("D")
 })
 
 // bBtn.addEventListener("click", logAnswer)
@@ -358,20 +363,55 @@ submitBtn.addEventListener("click", playerChoice)
 // }
 
 /*-----------functions-------------*/
+let currentQuestion
+init();
+function init() {
+  quizArr = ["", "", ""]
+  winner = null
+  currentQuestion = null
+  gameStatus.textContent = "Choose a category to start!"
+  render();
+}
 
-init(
-  createQuestion()
-)
-
-function createQuestion(evt) {
-  const nextQuestion = evt.target.id === "submit"
-  const newQuestion = {
-    prompt: getQuiz(),
-    choices: getQuiz()
+function render() {
+  quizArr.forEach((box, index) => {
+  if (box === 0) {
+    quizArr[index].textContent = `${scienceQuestions.question}`
+  } else {
+    quizArr[index].textContent = null;
   }
-  quiz.push(newQuestion)
+})}
+
+quizArr.forEach(function (row){
+submitBtn.addEventListener('click', handleClick)})
+
+function handleClick(evt){
+  if(quiz[+(evt.target.id.replace("question",''))] !== null){
+    return
+  } else if(winner !== null){
+    return
+  } else {
+    quiz[+(evt.target.id.replace("question",''))] = turn
+  }
+  turn *= -1
   render()
 }
+//   createQuestion()
+// )
+
+// function createQuestion(evt) {
+//   const nextQuestion = evt.target.id === "submit"
+//   const newQuestion = {
+//     prompt: getQuiz(),
+//     choices: getQuiz()
+//   }
+//   quiz.push(newQuestion)
+//   render()
+// }
+
+// render (
+
+// )
 
 // function init(){
 // appendQuestion();
@@ -406,6 +446,6 @@ function createQuestion(evt) {
 
 // console.log(quizArr)
 
-function checkAnswer(){
+// function checkAnswer(){
 
-}
+// }
