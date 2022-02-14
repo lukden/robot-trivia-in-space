@@ -235,7 +235,29 @@ const scienceChoices = [
   "d = 53%"]
 ]
 
-console.log(scienceChoices[1])
+const choicesA = ["A = Mars", "A = Play Doom II"
+
+]
+
+const choicesB = ["B = Uranus", "B = Drive tiny cars"]
+
+const choicesC = [
+  "C = Saturn", "C = Cook food"
+  
+]
+
+const choicesD = [
+  "D = Earth", "D = Find landmines"
+  
+]
+
+const answers = ["D = Earth", "C = Cook food"]
+
+
+
+
+
+// console.log(scienceChoices[1])
 // const scienceChoices = {
 //  ["Mars",
 //    "Uranus",
@@ -273,12 +295,33 @@ const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
 const quizContainer = document.querySelector('#quiz-container')
 document.getElementById('question').innerHTML = scienceQuestions[0];
-document.getElementById('choices').innerHTML = scienceChoices[0];
+document.getElementById('choices').innerHTML = 
+`<ul id="choices">
+<li id="a-q">${choicesA[0]}</li>
+<li id="b-q">${choicesB[0]}</li>
+<li id="c-q">${choicesC[0]}</li>
+<li id="d-q">${choicesD[0]}</li>
+</ul>`
 
-
+console.log(choicesB[0])
 /*---------------Event Listeners---------*/
 
-// aBtn.addEventListener("click", logAnswer)
+aBtn.addEventListener("click", function (){
+  console.log(choicesA)
+})
+
+bBtn.addEventListener("click", function (){
+  console.log(choicesB)
+})
+
+cBtn.addEventListener("click", function (){
+  console.log(choicesC)
+})
+
+dBtn.addEventListener("click", function (){
+  console.log(choicesD)
+})
+
 // bBtn.addEventListener("click", logAnswer)
 // cBtn.addEventListener("click", logAnswer)
 // dBtn.addEventListener("click", logAnswer)
@@ -289,15 +332,15 @@ submitBtn.addEventListener("click", createQuestion)
 
 // init()
 
-function createQuestion(evt) {
-  const nextQuestion = evt.target.id === "submit"
-  const newQuestion = {
-    prompt: getQuiz(),
-    choices: getQuiz()
-  }
-  quiz.push(newQuestion)
-  render()
-}
+// function createQuestion(evt) {
+//   const nextQuestion = evt.target.id === "submit"
+//   const newQuestion = {
+//     prompt: getQuiz(),
+//     choices: getQuiz()
+//   }
+//   quiz.push(newQuestion)
+//   render()
+// }
 
 // function init(){
 // appendQuestion();
@@ -305,26 +348,15 @@ function createQuestion(evt) {
 // win = null;
 // }
 
-function render() {
+// function render() {
 
-  quizContainer.innerHTML = ""
-quiz.forEach((question, idx) =>{
-  appendQuestion(question, idx)
-})
-}
+//   quizContainer.innerHTML = ""
+// quiz.forEach((question, idx) =>{
+//   appendQuestion(question, idx)
+// })
+// }
 
-function appendQuestion(question, idx) {
-  let quizCard = document.createElement("div")
-  quizCard.classList.add("card", `${question.prompt}`)
-  quizCard.innerHTML =
-  `<div class="card-body>
-  <question class="questionsss">
-  <p>${question.prompt}</p>
-  <p>${question.choices}</p>
-  </div>`
 
- quizContainer.appendChild(quizCard)
-}
 
 // console.log(appendQuestion)
 
@@ -341,5 +373,3 @@ function appendQuestion(question, idx) {
 // }
 
 // console.log(quizArr)
-
-
