@@ -1,6 +1,6 @@
 // /*-----------Constants----------*/
 
-import { getQuiz } from "../js-arrays/quiz.js"
+// import { getQuiz } from "../js-arrays/quiz.js"
 
 
 // var answers, correctAnswer, a, b, c, d
@@ -9,39 +9,43 @@ const scienceQuestions = [
   {
     question: "Which planet is the 3rd closest to the sun?",
     choices: ["Mars",
-     "Saturn",
-     "Pluto",
-     "Earth",
+    "Saturn",
+    "Pluto",
+    "Earth",
     ],
     correctAnswer: "Earth",
   },
   {
     question: "Scientists taught rats how to ______. Which option does NOT acurately finsh the sentence?",
-    choiceA: "Play Doom II",
-    choiceB: "Drive tiny cars",
-    choiceC: "Cook food",
-    choiceD: "Find landmines",
+    choices: ["Play Doom II",
+    "Drive tiny cars",
+    "Cook food",
+    "Find landmines",],
     correctAnswer: "Cook food",
   },
   {
     question: "What is the country of origin of the first living creature sent into space?",
-    choiceA: "China",
-    choiceB: "United States of America",
-    choiceC: "Soviet Union",
-    choiceD: "United Kingdom",
+    choices: 
+    ["China",
+  "United States of America",
+  "Soviet Union",
+  "United Kingdom",],
     correctAnswer: "Soviet Union",
   },
   {
     question: "Dark matter matter makes up this percentage of all matter in the universe?",
-    choiceA: "15%",
-    choiceB: "27%",
-    choiceC: "40%",
-    choiceD: "53%",
+    choices: ["15%",
+      "27%",
+      "40%",
+      "53%",],
     answer: "27%",
   }
 ]
 
-const correctAnswer = ["D", "C", "C", "D"]
+let correctAnswers = ["D", "C", "C", "D"]
+let currentAnswer = []
+// console.log(correctAnswers)
+// console.log(currentAnswer)
 // console.log(scienceQuestions)
 const result = scienceQuestions.map(questiony => ({ text: questiony.question, choices: questiony.choices }));
 console.log(result)
@@ -77,7 +81,7 @@ let rightAnswers = []
 let wrongAnswers = []
 let pickedCategory = "scienceQuestions"
 let winner
-let currentAnswer = []
+// let currentAnswer = []
 let currentCorrect
 let quizArr = []
 
@@ -101,33 +105,41 @@ const choicesArr = document.getElementById("choices")
 /*---------------Event Listeners---------*/
 
 aBtn.addEventListener("click", function (){
-  console.log(currentAnswer)
   currentAnswer.push("A")
+  console.log("A")
+  console.log(checkAnswer(currentAnswer, correctAnswers))
 })
 
 bBtn.addEventListener("click", function (){
-  console.log(currentAnswer)
   currentAnswer.push("B")
+  console.log('B')
+  // console.log(currentAnswer)
+  console.log(checkAnswer(currentAnswer, correctAnswers))
 })
 
 cBtn.addEventListener("click", function (){
-  console.log(currentAnswer)
   currentAnswer.push("C")
+  console.log('C')
+  // console.log(currentAnswer)
+  console.log(checkAnswer(currentAnswer, correctAnswers))
 })
 
 dBtn.addEventListener("click", function (){
-  console.log(currentAnswer)
   currentAnswer.push("D")
+  console.log('D')
+  // console.log(currentAnswer)
+  console.log(checkAnswer(currentAnswer, correctAnswers))
 })
 
-console.log(currentAnswer)
-
+console.log(correctAnswers)
 
 submitBtn.addEventListener("click", () => {
   console.log(getScienceQuestions())
 })
 
 submitBtn.addEventListener("click", createQuestion)
+
+submitBtn.addEventListener("click", checkAnswer)
 
 
 /*-----------functions-------------*/
@@ -142,6 +154,11 @@ function createQuestion(evt) {
   quizArr.push(newQuestion)
   render()
 }
+
+function checkAnswer (currentAnswer, correctAnswers) {
+  return Array.isArray(currentAnswer) && Array.isArray(correctAnswers) && currentAnswer.length === correctAnswers.length && currentAnswer.every((val, index) => val === correctAnswers[index])
+}
+console.log(checkAnswer(currentAnswer, correctAnswers))
 
 
 
