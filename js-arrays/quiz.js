@@ -422,7 +422,7 @@ export {
 
 //
 
-const quizCategories = ["scienceQuestions", "popCulture", "images", "misc"]
+// const quizCategories = ["scienceQuestions", "popCulture", "images", "misc"]
 
 // let scienceQuestions = [
 //   "Which planet is the 3rd closest to the sun?",

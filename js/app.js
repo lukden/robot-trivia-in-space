@@ -8,10 +8,11 @@ import { getQuiz } from "../js-arrays/quiz.js"
 const scienceQuestions = [
   {
     question: "Which planet is the 3rd closest to the sun?",
-    choiceA: "Mars",
-    choiceB: "Saturn",
-    choiceC: "Pluto",
-    choiceD: "Earth",
+    choices: ["Mars",
+     "Saturn",
+     "Pluto",
+     "Earth",
+    ],
     correctAnswer: "Earth",
   },
   {
@@ -42,13 +43,13 @@ const scienceQuestions = [
 
 const correctAnswer = ["D", "C", "C", "D"]
 // console.log(scienceQuestions)
-const result = scienceQuestions.map(questiony => ({ text: questiony.question, value: questiony.choiceA }));
+const result = scienceQuestions.map(questiony => ({ text: questiony.question, choices: questiony.choices }));
 console.log(result)
 
 Array.prototype.values
 const iterator = result.values();
-for(const value of iterator){
-  console.log(value)
+for(const choices of iterator){
+  console.log(choices)
 }
 
 for (let i = 0; i < scienceQuestions.length; i++){
@@ -132,9 +133,11 @@ submitBtn.addEventListener("click", createQuestion)
 /*-----------functions-------------*/
 
 function createQuestion(evt) {
+  let object = getScienceQuestions()
+  console.log(object)
   const newQuestion = {
-    text: getScienceQuestions(),
-    value: getScienceQuestions()
+    text: object.text,
+    choices: object.choices
   }
   quizArr.push(newQuestion)
   render()
@@ -143,8 +146,9 @@ function createQuestion(evt) {
 
 
 function appendQuestion(ques, idx) {
+  console.log(ques)
   let questionCard = document.createElement("div")
-  questionCard.classList.add("card", `${ques.value.toLowerCase}`)
+  questionCard.className = `card ${ques.text.toLowerCase}`
   questionCard.innerHTML =
   `<div>
   <section class ="quiz">
@@ -152,10 +156,10 @@ function appendQuestion(ques, idx) {
     <p id ="questions">${ques.text}</p>
     <div id="choice">
       <ul id="choices"> 
-      <li id="a-q">${ques.value}</li>
-      <li id="b-q">${ques.value}</li>
-      <li id="c-q">${ques.value}</li>
-      <li id="d-q">${ques.value}</li>
+      <li id="a-q">${ques.choices[0]}</li>
+      <li id="b-q">${ques.choices[1]}</li>
+      <li id="c-q">${ques.choices[2]}</li>
+      <li id="d-q">${ques.choices[3]}</li>
     </ul>
   </div>`
   quizContainer.appendChild(questionCard)
