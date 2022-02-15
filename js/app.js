@@ -214,37 +214,84 @@ import { getQuiz } from "../js-arrays/quiz.js"
 
 const quizCategories = ["scienceQuestions", "popCulture", "images", "misc"]
 
+// let scienceQuestions = [
+//   "Which planet is the 3rd closest to the sun?",
+//   {
+    
+//     choices: ["Mars", "Saturn", "Pluto", "Earth"],
+//     correctAnswer: "Earth"
+//   },
+//   {
+//     question: "Scientists taught rats how to ______. Which option does NOT acurately finsh the sentence?",
+//     choices: ["Play Doom II",
+//     "Drive tiny cars",
+//     "Cook food",
+//     "Find landmines"],
+//     correctAnswer: "Cook food"
+//   },
+//   {
+//     question: "What is the country of origin of the first living creature sent into space?",
+//     choices: ["China",
+//     "United States of America",
+//     "Soviet Union",
+//     "United Kingdom"],
+//     correctAnswer: "Soviet Union"
+//   },
+//   {
+//     question: "Dark matter matter makes up this percentage of all matter in the universe?",
+//     choices: ["15%",
+//     "27%",
+//     "40%",
+//     "53%"],
+//     answer: "27%"
+//   }
+// ]
+
 let scienceQuestions = [
   {
     question: "Which planet is the 3rd closest to the sun?",
-    choices: ["Mars", "Saturn", "Pluto", "Earth"],
-    correctAnswer: "Earth"
+    choiceA: "Mars",
+    choiceB: "Saturn",
+    choiceC: "Pluto",
+    choiceD: "Earth",
+    correctAnswer: "Earth",
   },
   {
     question: "Scientists taught rats how to ______. Which option does NOT acurately finsh the sentence?",
-    choices: ["Play Doom II",
-    "Drive tiny cars",
-    "Cook food",
-    "Find landmines"],
-    correctAnswer: "Cook food"
+    choiceA: "Play Doom II",
+    choiceB: "Drive tiny cars",
+    choiceC: "Cook food",
+    choiceD: "Find landmines",
+    correctAnswer: "Cook food",
   },
   {
     question: "What is the country of origin of the first living creature sent into space?",
-    choices: ["China",
-    "United States of America",
-    "Soviet Union",
-    "United Kingdom"],
-    correctAnswer: "Soviet Union"
+    choiceA: "China",
+    choiceB: "United States of America",
+    choiceC: "Soviet Union",
+    choiceD: "United Kingdom",
+    correctAnswer: "Soviet Union",
   },
   {
     question: "Dark matter matter makes up this percentage of all matter in the universe?",
-    choices: ["15%",
-    "27%",
-    "40%",
-    "53%"],
-    answer: "27%"
+    choiceA: "15%",
+    choiceB: "27%",
+    choiceC: "40%",
+    choiceD: "53%",
+    answer: "27%",
   }
 ]
+
+
+// console.log(scienceQuestions)
+var result = scienceQuestions.map(questiony => ({ text: questiony.question, value: questiony.choiceA }));
+console.log(result)
+
+Array.prototype.values
+const iterator = result.values();
+for(const value of iterator){
+  console.log(value)
+}
 
 for (let i = 0; i < scienceQuestions.length; i++){
   if (scienceQuestions[i] === null) {
@@ -254,8 +301,9 @@ for (let i = 0; i < scienceQuestions.length; i++){
 }
 
 function getScienceQuestions() {
-  return scienceQuestions[Math.floor(Math.random() * scienceQuestions.length)]
+  return result[Math.floor(Math.random() * result.length)]
 }
+console.log(getScienceQuestions())
 
 // for (let i = 0; i < scienceQuestions.length; i++)
 // {
@@ -292,7 +340,7 @@ let rightAnswers = []
 let wrongAnswers = []
 let pickedCategory = "scienceQuestions"
 let winner
-let currentAnswer
+let currentAnswer = []
 let currentCorrect
 let quizArr = []
 
@@ -307,39 +355,35 @@ const dBtn = document.querySelector("#d-button")
 // const sumOfIncorrect = document.querySelector("sumIncorrect")
 const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
-// const quizContainer = document.querySelector('#quiz-container')
+const quizContainer = document.querySelector('#quiz-container')
 const quiz = document.querySelectorAll(".quiz")
 const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
-const choicesArr = document.getElementById("choices").textContent 
-// console.log(quiz)
-// document.getElementById('choices').innerHTML = 
-// `<ul id="choices">
-// <li id="a-q">${scienceQuestions.choices.index}</li>
-// <li id="b-q">${scienceQuestions.choices}</li>
-// <li id="c-q">${scienceQuestions.choices}</li>
-// <li id="d-q">${scienceQuestions.choices}</li>
-// </ul>`
+const choicesArr = document.getElementById("choices")
 
-// console.log(scienceQuestions.choices)
-// console.log(choicesB[0])
 /*---------------Event Listeners---------*/
 
 aBtn.addEventListener("click", function (){
-  console.log("A")
+  console.log(currentAnswer)
+  currentAnswer.push("A")
 })
 
 bBtn.addEventListener("click", function (){
-  console.log("B")
+  console.log(currentAnswer)
+  currentAnswer.push("B")
 })
 
 cBtn.addEventListener("click", function (){
-  console.log("C")
+  console.log(currentAnswer)
+  currentAnswer.push("C")
 })
 
 dBtn.addEventListener("click", function (){
-  console.log("D")
+  console.log(currentAnswer)
+  currentAnswer.push("D")
 })
+
+console.log(currentAnswer)
 
 // bBtn.addEventListener("click", logAnswer)
 // cBtn.addEventListener("click", logAnswer)
@@ -348,6 +392,8 @@ dBtn.addEventListener("click", function (){
 submitBtn.addEventListener("click", () => {
   console.log(getScienceQuestions())
 })
+
+submitBtn.addEventListener("click", createQuestion)
 
 // function finalizeAnswer() {
 //   if {
@@ -369,15 +415,51 @@ submitBtn.addEventListener("click", () => {
 
 /*-----------functions-------------*/
 
-function init() {
-  quizArr = [null, null, null]
-  winner = null
-  currentQuestion = null
-  gameStatus.textContent = "Choose a category to start!"
+function createQuestion(evt) {
+  // const newSQuestion = evt.target.id === "submit"
+  const newQuestion = {
+    text: getScienceQuestions(),
+    value: getScienceQuestions()
+  }
+  quizArr.push(newQuestion)
   render()
+  // render()
 }
 
+function appendQuestion(ques, idx) {
+  let questionCard = document.createElement("div")
+  questionCard.classList.add("card", `${ques.value.toLowerCase}`)
+  questionCard.innerHTML =
+  `<div>
+  <section class ="quiz">
+    <p>Questions</p>
+    <p id ="questions">${ques.text}</p>
+    <div id="choice">
+      <ul id="choices"> 
+      <li id="a-q">${ques.value}</li>
+      <li id="b-q">${ques.value}</li>
+      <li id="c-q">${ques.value}</li>
+      <li id="d-q">${ques.value}</li>
+    </ul>
+  </div>`
+  quizContainer.appendChild(questionCard)
+}
+// function init() {
+//   quizArr = [null, null, null]
+//   winner = null
+//   currentQuestion = null
+//   gameStatus.textContent = "Choose a category to start!"
+//   render()
+// }
+
 function render(){
+
+  quizContainer.innerHTML = ""
+  // quotes is an array of quote objects
+  quizArr.forEach((ques, idx) => {
+    // quote is an object with the shape of:
+    // { artist: "artist name", text: "quote" }
+    appendQuestion(ques, idx)
   // let q = scienceQuestions.question
   
 
@@ -400,49 +482,27 @@ function render(){
   // } else {
   //   quiz[+(evt.target.id.replace("question",''))] ;
   // }
-  // render()
-// }
-//   createQuestion()
-// )
 
-function createQuestion(evt) {
-  const newSQuestion = evt.target.id === "submit"
-  const newQuestion = 
-    getScienceQuestions()
-  quizArr.push(newQuestion)
-}
 
-// render (
 
-// )
-
-// function init(){
-// appendQuestion();
-// render();
-// win = null;
-// }
-
-// function render() {
-
-//   quizContainer.innerHTML = ""
-// quiz.forEach((question, idx) =>{
-//   appendQuestion(question, idx)
-// })
+// function appendQuestion(ques) {
+//   let questionCard = document.createElement("div")
+//   questionCard.classList.add("card", `${ques.toLowerCase()}`)
+//   questionCard.innerHTML =
+//   `<div>
+//   <section class ="quiz">
+//     <p>Questions</p>
+//     <p id ="questions">${ques.text}</p>
+//     <div id="choice">
+//       <ul id="choices"> 
+//       <li id="a-q"></li>
+//       <li id="b-q"></li>
+//       <li id="c-q"></li>
+//       <li id="d-q"></li>
+//     </ul>
+//   </div>`
+//   quizContainer.appendChild(quoteCard)
 // }
 
-
-
-// console.log(appendQuestion)
-
-
-
-// function createQuestion(evt) {
-//   const newQuestion = evt.target.id ===
-//   "submit"
-//   const newQuestion = {
-//     getQuiz();
-//   }
-//   quizArr.push(nextQuestion)
-//   render()
-// }
+})
 }

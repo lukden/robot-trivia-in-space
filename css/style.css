@@ -92,10 +92,16 @@ p,
 
 } */
 
-/* #quiz-container {
+#quiz-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-} */
+}
+
+.card {
+  margin-top: 30px;
+  width: 85%;
+  font-family: var(--serif);
+}
