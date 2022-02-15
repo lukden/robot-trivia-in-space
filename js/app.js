@@ -250,7 +250,11 @@ for (let i = 0; i < scienceQuestions.length; i++){
   if (scienceQuestions[i] === null) {
     console.log(scienceQuestions.question) 
   }
-  console.log(scienceQuestions)
+  console.log(scienceQuestions.question)
+}
+
+function getScienceQuestions() {
+  return scienceQuestions[Math.floor(Math.random() * scienceQuestions.length)]
 }
 
 // for (let i = 0; i < scienceQuestions.length; i++)
@@ -280,8 +284,6 @@ for (let i = 0; i < scienceQuestions.length; i++){
 
 
 
-
-
 /*-------------Variables-----------*/
 
 // let win, lose, playerName, timer
@@ -307,9 +309,9 @@ const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
 // const quizContainer = document.querySelector('#quiz-container')
 const quiz = document.querySelectorAll(".quiz")
-const qs = document.getElementById('question')
+const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
-const choicesArr = document.getElementById("choices")
+const choicesArr = document.getElementById("choices").textContent 
 // console.log(quiz)
 // document.getElementById('choices').innerHTML = 
 // `<ul id="choices">
@@ -343,7 +345,9 @@ dBtn.addEventListener("click", function (){
 // cBtn.addEventListener("click", logAnswer)
 // dBtn.addEventListener("click", logAnswer)
 
-submitBtn.addEventListener("click", playerChoice)
+submitBtn.addEventListener("click", () => {
+  console.log(getScienceQuestions())
+})
 
 // function finalizeAnswer() {
 //   if {
@@ -364,21 +368,18 @@ submitBtn.addEventListener("click", playerChoice)
 // }
 
 /*-----------functions-------------*/
-let currentQuestion
-init();
+
 function init() {
-  quizArr = [null, null]
+  quizArr = [null, null, null]
   winner = null
   currentQuestion = null
   gameStatus.textContent = "Choose a category to start!"
-  render();
+  render()
 }
 
-function render() {
-  let q = scienceQuestions.question
-  let quizArr.innerHTML = {
-  question = `${q}`
-  }
+function render(){
+  // let q = scienceQuestions.question
+  
 
 
 // quizArr.forEach(function (row){
@@ -404,15 +405,12 @@ function render() {
 //   createQuestion()
 // )
 
-// function createQuestion(evt) {
-//   const nextQuestion = evt.target.id === "submit"
-//   const newQuestion = {
-//     prompt: getQuiz(),
-//     choices: getQuiz()
-//   }
-//   quiz.push(newQuestion)
-//   render()
-// }
+function createQuestion(evt) {
+  const newSQuestion = evt.target.id === "submit"
+  const newQuestion = 
+    getScienceQuestions()
+  quizArr.push(newQuestion)
+}
 
 // render (
 
@@ -447,10 +445,4 @@ function render() {
 //   quizArr.push(nextQuestion)
 //   render()
 // }
-
-
-// console.log(quizArr)
-
-// function checkAnswer(){
-
-// }
+}

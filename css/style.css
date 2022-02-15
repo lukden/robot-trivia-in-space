@@ -36,10 +36,11 @@ h2 {
   border-width: 1px; */
 }
 
-#question {
+#questions {
   background-color: white;
   position: relative;
   height: 150px;
+  color: black;
 }
 
 #choices {
