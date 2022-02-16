@@ -42,7 +42,7 @@ const scienceQuestions = [
   }
 ]
 
-let correctAnswers = ["D", "C", "C", "D"]
+let correctAnswers = ["D", "C", "C", "D", "B"]
 let currentAnswer = []
 // console.log(correctAnswers)
 // console.log(currentAnswer)
@@ -108,6 +108,7 @@ aBtn.addEventListener("click", function (){
   currentAnswer.push("A")
   console.log("A")
   console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 })
 
 bBtn.addEventListener("click", function (){
@@ -115,6 +116,7 @@ bBtn.addEventListener("click", function (){
   console.log('B')
   // console.log(currentAnswer)
   console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 })
 
 cBtn.addEventListener("click", function (){
@@ -122,6 +124,7 @@ cBtn.addEventListener("click", function (){
   console.log('C')
   // console.log(currentAnswer)
   console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 })
 
 dBtn.addEventListener("click", function (){
@@ -129,6 +132,7 @@ dBtn.addEventListener("click", function (){
   console.log('D')
   // console.log(currentAnswer)
   console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 })
 
 console.log(correctAnswers)
@@ -156,9 +160,18 @@ function createQuestion(evt) {
 }
 
 function checkAnswer (currentAnswer, correctAnswers) {
-  return Array.isArray(currentAnswer) && Array.isArray(correctAnswers) && currentAnswer.some((val, index) => val === correctAnswers[val, index])
+  return Array.isArray(currentAnswer) && Array.isArray(correctAnswers) && currentAnswer.every((val, index) => val === correctAnswers[val, index])
 }
 console.log(checkAnswer(currentAnswer, correctAnswers))
+
+
+
+const sumCorrectAnswers = (currentAnswer, correctAnswers) => {
+  const spreaded = [...currentAnswer, ...correctAnswers];
+  return spreaded.filter(el => {
+    return currentAnswer.includes(el) && correctAnswers.includes(el)
+  })
+}
 
 
 
@@ -189,6 +202,11 @@ function appendQuestion(ques, idx) {
 //   render()
 // }
 
+// function winConditions(){
+//   if {
+//     checkAnswer(currentAnswer, correctAnswers)
+//   }
+// }
 function render(){
 
   quizContainer.innerHTML = ""
