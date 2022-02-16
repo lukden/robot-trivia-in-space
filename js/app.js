@@ -156,7 +156,7 @@ function createQuestion(evt) {
 }
 
 function checkAnswer (currentAnswer, correctAnswers) {
-  return Array.isArray(currentAnswer) && Array.isArray(correctAnswers) && currentAnswer.length === correctAnswers.length && currentAnswer.every((val, index) => val === correctAnswers[index])
+  return Array.isArray(currentAnswer) && Array.isArray(correctAnswers) && currentAnswer.some((val, index) => val === correctAnswers[val, index])
 }
 console.log(checkAnswer(currentAnswer, correctAnswers))
 
