@@ -13,7 +13,7 @@ const scienceQuestions = [
     "Pluto",
     "Earth",
     ],
-    correctAnswer: "Earth",
+    correctAnswer: "D",
   },
   {
     question: "Scientists taught rats how to ______. Which option does NOT acurately finsh the sentence?",
@@ -21,7 +21,7 @@ const scienceQuestions = [
     "Drive tiny cars",
     "Cook food",
     "Find landmines",],
-    correctAnswer: "Cook food",
+    correctAnswer: "C",
   },
   {
     question: "What is the country of origin of the first living creature sent into space?",
@@ -30,7 +30,7 @@ const scienceQuestions = [
   "United States of America",
   "Soviet Union",
   "United Kingdom",],
-    correctAnswer: "Soviet Union",
+    correctAnswer: "C",
   },
   {
     question: "Dark matter matter makes up this percentage of all matter in the universe?",
@@ -38,16 +38,16 @@ const scienceQuestions = [
       "27%",
       "40%",
       "53%",],
-    answer: "27%",
+    correctAnswer: "B",
   }
 ]
 
-let correctAnswers = ["D", "C", "C", "D", "B"]
+let correctAnswers = []
 let currentAnswer = []
 // console.log(correctAnswers)
 // console.log(currentAnswer)
 // console.log(scienceQuestions)
-const result = scienceQuestions.map(questiony => ({ text: questiony.question, choices: questiony.choices }));
+const result = scienceQuestions.map(questiony => ({ text: questiony.question, choices: questiony.choices, answers: questiony.correctAnswer}));
 console.log(result)
 
 Array.prototype.values
@@ -104,19 +104,20 @@ const choicesArr = document.getElementById("choices")
 
 /*---------------Event Listeners---------*/
 
-let summmm = JSON.stringify(currentAnswer) === JSON.stringify(correctAnswers)
-console.log(summmm)
+
+
 aBtn.addEventListener("click", function (){
   currentAnswer.push("A")
   console.log("A")
-  console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(correctAnswers)
+  console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
 bBtn.addEventListener("click", function (){
   currentAnswer.push("B")
   console.log('B')
   console.log(currentAnswer)
-  console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(correctIncorrect(currentAnswer, correctAnswers))
   // console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 })
 
@@ -124,14 +125,16 @@ cBtn.addEventListener("click", function (){
   currentAnswer.push("C")
   console.log('C')
   console.log(currentAnswer)
-  console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(correctAnswers)
+  console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
 dBtn.addEventListener("click", function (){
   currentAnswer.push("D")
   console.log('D')
   console.log(currentAnswer)
-  console.log(checkAnswer(currentAnswer, correctAnswers))
+  console.log(correctAnswers)
+  console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
 console.log(correctAnswers)
@@ -142,8 +145,12 @@ submitBtn.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", createQuestion)
 
+submitBtn.addEventListener("click", function(){
+  correctAnswers.push()
+})
+
 submitBtn.addEventListener("click", () => {
-console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
+console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
 
@@ -154,27 +161,39 @@ function createQuestion(evt) {
   console.log(object)
   const newQuestion = {
     text: object.text,
-    choices: object.choices
+    choices: object.choices,
+    answers: object.correctAnswer
   }
+  correctAnswers.push(object.answers)
+  console.log(correctAnswers)
   quizArr.push(newQuestion)
   render()
 }
-
-function checkAnswer (currentAnswer, correctAnswers) {
-  return Array.isArray(currentAnswer) && Array.isArray(correctAnswers) && currentAnswer.every((val, index) => val === correctAnswers[val, index])
-  // console.log(JSON.stringify(currentAnswer) === JSON.stringify(correctAnswers))
-}
+console.log(createQuestion)
 
 
 
+function correctIncorrect(currentAnswer, correctAnswers){
+  if (currentAnswer.length === correctAnswers.length) {
+    return true
+  }
+  return false
+  }
+// const overlap = [...currentAnswer, ...correctAnswers];
+// return overlap.filter(el => {
+//   return currentAnswer.includes(el) && correctAnswers.includes(el)
+// })
+console.log(correctIncorrect(currentAnswer, correctAnswers))
 
-const sumCorrectAnswers = (currentAnswer, correctAnswers) => {
-  const overlap = [...currentAnswer, ...correctAnswers];
-  return overlap.filter(el => {
-    return currentAnswer.includes(el) && correctAnswers.includes(el)
-  })
-}
-console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
+
+
+// const sumCorrectAnswers = (currentAnswer, correctAnswers) => {
+//   const overlap = [...currentAnswer, ...correctAnswers];
+//   return overlap.filter(el => {
+//     return currentAnswer.includes(el) && correctAnswers.includes(el)
+//   })
+// }
+// console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 
 
 function appendQuestion(ques, idx) {
