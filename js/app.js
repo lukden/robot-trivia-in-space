@@ -88,6 +88,7 @@ let hr, min, sec, seconds = 0
 
 /*-------------Cached Element References----------*/
 
+const timerEl = document.getElementById("timerEl")
 const playerChoice = document.querySelector(".player-choice")
 const aBtn = document.querySelector("#a-button")
 const bBtn = document.querySelector("#b-button")
@@ -107,10 +108,15 @@ const nextQ = document.querySelector(".next")
 
 /*---------------Event Listeners---------*/
 
+scienceCat.addEventListener("click", startTimer, {
+  once: true
+})
 scienceCat.addEventListener("click", createQuestion,
 {
   once: true
 })
+
+scienceCat
 
 aBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -198,13 +204,36 @@ init();
 function init(){
   // sumGuessCorrect.textContent = ""
   render()
+  timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId)
+  } else {
+    startTimer()
+  }
 }
 
 function startTimer() {
   timerIntervalId = setInterval(tick, 750)
 }
 
-function renderTimer()
+function tick(){
+  seconds++
+  console.log(seconds)
+  renderTimer()
+}
+
+function renderTimer() {
+  min = Math.floor(seconds / 60)
+  hr = Math.floor(seconds / 3600)
+  sec = min % 60
+  hr = hr % 24
+  if (sec < 10) {
+    timerEl.innerText = `${min}:0${sec}`
+  }else {
+    timerEl.innerText = `${min}:${sec}`
+  }
+}
+
 function createQuestion(evt) {
   let object = getScienceQuestions()
   console.log(object)
