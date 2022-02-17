@@ -84,7 +84,8 @@ let winner
 let quizArr = []
 let timerIntervalId
 let hr, min, sec, seconds = 0
-
+let correctAns = []
+let incorrectAns = []
 
 /*-------------Cached Element References----------*/
 
@@ -94,6 +95,7 @@ const aBtn = document.querySelector("#a-button")
 const bBtn = document.querySelector("#b-button")
 const cBtn = document.querySelector("#c-button")
 const dBtn = document.querySelector("#d-button")
+const cor = document.querySelector(".correct")
 const sumOfCorrect = document.querySelector("sumCorrect")
 // const sumOfIncorrect = document.querySelector("sumIncorrect")
 const scienceCat = document.getElementById("sci")
@@ -108,15 +110,21 @@ const nextQ = document.querySelector(".next")
 
 /*---------------Event Listeners---------*/
 
-scienceCat.addEventListener("click", startTimer, {
-  once: true
-})
+// scienceCat.addEventListener("click", startTimer, {
+//   once: true
+// })
 scienceCat.addEventListener("click", createQuestion,
 {
   once: true
 })
 
-scienceCat
+// function correctIncorrectPush (currentAnswer, correctAnswers){
+//   for(let i = 0; i<currentAnswer.length; i++)
+//     if (currentAnswer[i] !== correctAnswers[i]) {
+//       incorrectAns.push("I")
+//     }
+//     correctAns.push("C")
+//   }
 
 aBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -124,23 +132,29 @@ aBtn.addEventListener("click", function (){
   currentAnswer.push("A")
   userAnswer.push("A")
   console.log(userAnswer)
+  console.log(userAnswer)
   // console.log("A")
-  console.log(currentAnswer)
-  console.log(correctAnswers)
-  console.log(correctIncorrect(currentAnswer, correctAnswers)
-  )
-  // console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
+  correctIncorrect(currentAnswer, correctAnswers)
+  correctIncorrectPush(currentAnswer, correctAnswers)
+  console.log(correctIncorrect(currentAnswer, correctAnswers))
+console.log(correctIncorrectPush(currentAnswer, correctAnswers))
+
 })
 
-// aBtn.addEventListener("click", function(){
-//   scoreDisplay = sumOfCorrect.textContent;
-//   console.log(parseInt(scoreDisplay) + parseInt(userInp))
-//   sumOfCorrect.textContent = `${parseInt(scoreDisplay) + parseInt(userInp)}`
-// })
+// aBtn.addEventListener("click", function(currentAnswer, correctAnswers){{
+//   for(let i = 0; i<currentAnswer.length; i++)
+//     if (currentAnswer[i] !== correctAnswers[i]) {
+//       incorrectAns.push("I")
+//       console.log(incorrectAns)
+//     }
+//     correctAns.push("C")
+//   console.log(correctAns)
+// }}
+// )
 
-// console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
+// aBtn.addEventListener("click", correctIncorrectPush)
 
-console.log(wrongAnswers)
+// console.log(wrongAnswers)
 
 bBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -148,11 +162,13 @@ bBtn.addEventListener("click", function (){
   currentAnswer.push("B")
   userAnswer.push("B")
   // console.log('B')
-  console.log(currentAnswer)
-  console.log(correctAnswers)
+  correctIncorrect(currentAnswer, correctAnswers)
+  correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-  // console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
+
 })
+
+// bBtn.addEventListener("click", correctIncorrectPush)
 
 cBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -162,8 +178,13 @@ cBtn.addEventListener("click", function (){
   // console.log('C')
   console.log(currentAnswer)
   console.log(correctAnswers)
+  correctIncorrect(currentAnswer, correctAnswers)
+  correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
+
 })
+
+// cBtn.addEventListener("click", correctIncorrectPush)
 
 dBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -172,11 +193,15 @@ dBtn.addEventListener("click", function (){
   userAnswer.push("D")
 
   // console.log('D')
+  correctIncorrect(currentAnswer, correctAnswers)
+  correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-  console.log(currentAnswer)
-  console.log(correctAnswers)
-  // console.log(correctIncorrect(currentAnswer, correctAnswers))
+
 })
+
+
+// dBtn.addEventListener("click", correctIncorrectPush)
+
 
 // console.log(correctAnswers)
 
@@ -195,7 +220,16 @@ console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
 // nextQ.addEventListener("click", createQuestion)
-
+// nextQ.addEventListener('click', function(currentAnswer, correctAnswers){
+//     for(let i = 0; i<currentAnswer.length; i++)
+//       if (currentAnswer[i] !== correctAnswers[i]) {
+//         correctAns.push("C")
+//       } else{
+//       incorrectAns.push("I")
+//     }
+//     console.log(correctAns)
+//     console.log(incorrectAns)
+// }
 
 
 /*-----------functions-------------*/
@@ -204,35 +238,35 @@ init();
 function init(){
   // sumGuessCorrect.textContent = ""
   render()
-  timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
-  if (timerIntervalId) {
-    clearInterval(timerIntervalId)
-  } else {
-    startTimer()
-  }
+  // timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
+  // if (timerIntervalId) {
+  //   clearInterval(timerIntervalId)
+  // } else {
+  //   startTimer()
+  // }
 }
 
-function startTimer() {
-  timerIntervalId = setInterval(tick, 750)
-}
+// function startTimer() {
+//   timerIntervalId = setInterval(tick, 10 00)
+// }
 
-function tick(){
-  seconds++
-  console.log(seconds)
-  renderTimer()
-}
+// function tick(){
+//   seconds++
+//   console.log(seconds)
+//   renderTimer()
+// }
 
-function renderTimer() {
-  min = Math.floor(seconds / 60)
-  hr = Math.floor(seconds / 3600)
-  sec = min % 60
-  hr = hr % 24
-  if (sec < 10) {
-    timerEl.innerText = `${min}:0${sec}`
-  }else {
-    timerEl.innerText = `${min}:${sec}`
-  }
-}
+// function renderTimer() {
+//   min = Math.floor(seconds / 60)
+//   hr = Math.floor(seconds / 3600)
+//   sec = min % 60
+//   hr = hr % 24
+//   if (sec < 10) {
+//     timerEl.innerText = `${min}:0${sec}`
+//   }else {
+//     timerEl.innerText = `${min}:${sec}`
+//   }
+// }
 
 function createQuestion(evt) {
   let object = getScienceQuestions()
@@ -258,7 +292,15 @@ function correctIncorrect(currentAnswer, correctAnswers){
     return true;
 }
 
-
+function correctIncorrectPush (currentAnswer, correctAnswers){{
+  for(let i = 0; i<currentAnswer.length; i++)
+    if (currentAnswer[i] !== correctAnswers[i]) {
+      incorrectAns.push("I")
+      console.log(incorrectAns)
+    }
+    correctAns.push("C")
+  console.log(correctAns)
+}}
 
 // function sumOfCorrectIncorrect(currentAnswer, correctAnswers){
 //   for(let i=0; i<currentAnswer.length; i++)
@@ -324,8 +366,6 @@ function addDeleteBtnListeners() {
   if(deleteQuestionBtns.length){
     deleteQuestionBtns.forEach(deleteQuestionBtn => {
       deleteQuestionBtn.addEventListener("click", deleteQuestion)
-      // deleteQuestionBtns.forEach(deleteQuestionBtn => {
-      //   deleteQuestionBtn.addEventListener("click", createQuestion)
     })
     deleteQuestionBtns.forEach(deleteQuestionBtn => {
       deleteQuestionBtn.addEventListener("click", createQuestion)
@@ -350,34 +390,14 @@ function addDeleteBtnListeners() {
 function render(){
 
   quizContainer.innerHTML = ""
-  // quotes is an array of quote objects
   quizArr.forEach((ques, idx) => {
-    // quote is an object with the shape of:
-    // { artist: "artist name", text: "quote" }
     appendQuestion(ques, idx) 
   })
   addDeleteBtnListeners()
 }
-  // let q = scienceQuestions.question
+
   
 
 
-// quizArr.forEach(function (row){
-// submitBtn.addEventListener('click', handleClick)})
 
-// function handleClick(evt){
-//     const nextQuestion = evt.target.id === "submit"
-//   const newQuestion = {
-//     prompt: getQuiz(),
-//     choices: getQuiz()
-//   }
-//   quiz.push(newQuestion)
-//   render()
-  // if(quiz[+(evt.target.id.replace("question",''))] !== null){
-  //   return
-  // } else if(winner !== null){
-  //   return
-  // } else {
-  //   quiz[+(evt.target.id.replace("question",''))] ;
-  // }
 
