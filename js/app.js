@@ -114,8 +114,14 @@ aBtn.addEventListener("click", function (){
   // console.log("A")
   console.log(currentAnswer)
   console.log(correctAnswers)
-  console.log(correctIncorrect(currentAnswer, correctAnswers))
+  console.log(correctIncorrect(currentAnswer, correctAnswers)
+  )
+  console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
 })
+
+console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
+
+console.log(wrongAnswers)
 
 bBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -136,7 +142,6 @@ cBtn.addEventListener("click", function (){
   console.log(currentAnswer)
   console.log(correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-  correctAnswers.pop(0)
 })
 
 dBtn.addEventListener("click", function (){
@@ -198,9 +203,17 @@ function createQuestion(evt) {
 function correctIncorrect(currentAnswer, correctAnswers){
   for(let i=0; i<currentAnswer.length; i++)
   if (currentAnswer[i] !== correctAnswers[i]) {
-    return false;
+    return false; 
   }
     return true;
+}
+
+function sumOfCorrectIncorrect(currentAnswer, correctAnswers){
+  for(let i=0; i<currentAnswer.length; i++)
+  if (currentAnswer[i] !== correctAnswers[i]) {
+    wrongAnswers.push(0)
+  }
+    rightAnswers.push(0)
 }
 // const overlap = [...currentAnswer, ...correctAnswers];
 // return overlap.filter(el => {
