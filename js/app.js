@@ -76,13 +76,11 @@ console.log(getScienceQuestions())
 /*-------------Variables-----------*/
 
 // let win, lose, playerName, timer
-
+let userAnswer = []
 let rightAnswers = []
 let wrongAnswers = []
 let pickedCategory = "scienceQuestions"
 let winner
-// let currentAnswer = []
-let currentCorrect
 let quizArr = []
 
 /*-------------Cached Element References----------*/
@@ -92,7 +90,7 @@ const aBtn = document.querySelector("#a-button")
 const bBtn = document.querySelector("#b-button")
 const cBtn = document.querySelector("#c-button")
 const dBtn = document.querySelector("#d-button")
-// const sumOfCorrect = document.querySelector("sumCorrect")
+const sumOfCorrect = document.querySelector("sumCorrect")
 // const sumOfIncorrect = document.querySelector("sumIncorrect")
 const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
@@ -111,15 +109,23 @@ aBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
   // correctAnswers.pop(0)
   currentAnswer.push("A")
+  userAnswer.push("A")
+  console.log(userAnswer)
   // console.log("A")
   console.log(currentAnswer)
   console.log(correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers)
   )
-  console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
+  // console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
 })
 
-console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
+// aBtn.addEventListener("click", function(){
+//   scoreDisplay = sumOfCorrect.textContent;
+//   console.log(parseInt(scoreDisplay) + parseInt(userInp))
+//   sumOfCorrect.textContent = `${parseInt(scoreDisplay) + parseInt(userInp)}`
+// })
+
+// console.log(sumOfCorrectIncorrect(currentAnswer, correctAnswers))
 
 console.log(wrongAnswers)
 
@@ -127,6 +133,7 @@ bBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
   // correctAnswers.pop(0)
   currentAnswer.push("B")
+  userAnswer.push("B")
   // console.log('B')
   console.log(currentAnswer)
   console.log(correctAnswers)
@@ -137,6 +144,7 @@ bBtn.addEventListener("click", function (){
 cBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
   currentAnswer.push("C")
+  userAnswer.push("C")
   
   // console.log('C')
   console.log(currentAnswer)
@@ -148,6 +156,7 @@ dBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
   // correctAnswers.pop(0)
   currentAnswer.push("D")
+  userAnswer.push("D")
 
   // console.log('D')
   console.log(correctIncorrect(currentAnswer, correctAnswers))
@@ -208,13 +217,15 @@ function correctIncorrect(currentAnswer, correctAnswers){
     return true;
 }
 
-function sumOfCorrectIncorrect(currentAnswer, correctAnswers){
-  for(let i=0; i<currentAnswer.length; i++)
-  if (currentAnswer[i] !== correctAnswers[i]) {
-    wrongAnswers.push(0)
-  }
-    rightAnswers.push(0)
-}
+
+
+// function sumOfCorrectIncorrect(currentAnswer, correctAnswers){
+//   for(let i=0; i<currentAnswer.length; i++)
+//   if (currentAnswer[i] !== correctAnswers[i]) {
+//     return wrongAnswers.concat("1")
+//   }
+//     return rightAnswers.contact("1")
+// }
 // const overlap = [...currentAnswer, ...correctAnswers];
 // return overlap.filter(el => {
 //   return currentAnswer.includes(el) && correctAnswers.includes(el)
