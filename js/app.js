@@ -101,43 +101,56 @@ const quiz = document.querySelectorAll(".quiz")
 const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
 const choicesArr = document.getElementById("choices")
+const nextQ = document.querySelector("#next")
 
 /*---------------Event Listeners---------*/
 
 
 
 aBtn.addEventListener("click", function (){
+  currentAnswer.pop(0)
+  // correctAnswers.pop(0)
   currentAnswer.push("A")
-  console.log("A")
+  // console.log("A")
+  console.log(currentAnswer)
   console.log(correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
 bBtn.addEventListener("click", function (){
+  currentAnswer.pop(0)
+  // correctAnswers.pop(0)
   currentAnswer.push("B")
-  console.log('B')
+  // console.log('B')
   console.log(currentAnswer)
+  console.log(correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
   // console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 })
 
 cBtn.addEventListener("click", function (){
+  currentAnswer.pop(0)
   currentAnswer.push("C")
-  console.log('C')
+  
+  // console.log('C')
   console.log(currentAnswer)
   console.log(correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
+  // correctAnswers.pop(0)
 })
 
 dBtn.addEventListener("click", function (){
+  currentAnswer.pop(0)
+  // correctAnswers.pop(0)
   currentAnswer.push("D")
-  console.log('D')
+
+  // console.log('D')
   console.log(currentAnswer)
   console.log(correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
-console.log(correctAnswers)
+// console.log(correctAnswers)
 
 submitBtn.addEventListener("click", () => {
   console.log(getScienceQuestions())
@@ -145,13 +158,17 @@ submitBtn.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", createQuestion)
 
-submitBtn.addEventListener("click", function(){
-  correctAnswers.push()
-})
+// submitBtn.addEventListener("click", function(){
+  // currentAnswer.push()
+// })
 
 submitBtn.addEventListener("click", () => {
 console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
+
+// nextQ.addEventListener("click", removeQuestion)
+
+// nextQ.addEventListener("click", createQuestion)
 
 
 /*-----------functions-------------*/
@@ -165,17 +182,21 @@ function createQuestion(evt) {
     answers: object.correctAnswer
   }
   correctAnswers.push(object.answers)
-  console.log(correctAnswers)
+  // console.log(correctAnswers)
   quizArr.push(newQuestion)
   render()
 }
-console.log(createQuestion)
 
 
 
 function correctIncorrect(currentAnswer, correctAnswers){
   if (currentAnswer.length === correctAnswers.length) {
+    console.log(currentAnswer.length)
+    console.log(correctAnswers.length)
     return true
+  }
+  else {
+    (currentAnswer.length !== correctAnswers.length)
   }
   return false
   }
@@ -183,7 +204,7 @@ function correctIncorrect(currentAnswer, correctAnswers){
 // return overlap.filter(el => {
 //   return currentAnswer.includes(el) && correctAnswers.includes(el)
 // })
-console.log(correctIncorrect(currentAnswer, correctAnswers))
+// console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 
 
@@ -196,10 +217,11 @@ console.log(correctIncorrect(currentAnswer, correctAnswers))
 // console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
 
 
+
 function appendQuestion(ques, idx) {
   console.log(ques)
   let questionCard = document.createElement("div")
-  questionCard.className = `card ${ques.text.toLowerCase}`
+  questionCard.className = `card ${ques.text}`
   questionCard.innerHTML =
   `<div>
   <section class ="quiz">
@@ -212,9 +234,28 @@ function appendQuestion(ques, idx) {
       <li id="c-q">${ques.choices[2]}</li>
       <li id="d-q">${ques.choices[3]}</li>
     </ul>
-  </div>`
+  </div>
+  <footer class="card-footer">
+  <button class="btn delete-btn" id="delete-btn-${idx}">Next Question</button>
+</footer>`
   quizContainer.appendChild(questionCard)
 }
+
+function deleteQuestion(evt) {
+  const idx = evt.target.id.replace("delete-btn-", "")
+  quizArr.splice(idx, 1)
+  render()
+}
+function addDeleteBtnListeners() {
+  const deleteQuestionBtns = document.querySelectorAll("#next")
+  if(deleteQuestionBtns.length){
+    deleteQuestionBtns.forEach(deleteQuestionBtn => {
+      deleteQuestionBtn.addEventListener("click", deleteQuestion)
+    })
+  }
+}
+
+
 // function init() {
 //   quizArr = [null, null, null]
 //   winner = null
@@ -235,7 +276,9 @@ function render(){
   quizArr.forEach((ques, idx) => {
     // quote is an object with the shape of:
     // { artist: "artist name", text: "quote" }
-    appendQuestion(ques, idx)
+    appendQuestion(ques, idx) 
+  })
+  addDeleteBtnListeners()
   // let q = scienceQuestions.question
   
 
@@ -259,5 +302,4 @@ function render(){
   //   quiz[+(evt.target.id.replace("question",''))] ;
   // }
 
-})
 }
