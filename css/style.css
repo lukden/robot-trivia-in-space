@@ -15,7 +15,26 @@ h2 {
   background-color: blue
 }
 
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative; 
+  padding: 30px;
+  /* width: 100px; */
+  text-align: center;
+}
 
+.submit {
+  display: grid;
+  grid-template-columns: 140px 140px;
+  text-align: center;
+  position: relative;
+  background-color: bisque;
+  /* padding-left: 58px; */
+  padding-top: 10px;
+  height: 50px;
+  width: 280px;
+}
 
 .quiz {
   display: grid;
@@ -69,17 +88,7 @@ h2 {
 }
 
 
-.submit {
-  display: grid;
-  grid-template-columns: 140px 140px;
-  text-align: center;
-  position: relative;
-  background-color: bisque;
-  /* padding-left: 58px; */
-  padding-top: 10px;
-  height: 50px;
-  width: 280px;
-}
+
 
 p,
 #game-status {

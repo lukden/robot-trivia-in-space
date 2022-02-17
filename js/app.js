@@ -82,6 +82,9 @@ let wrongAnswers = []
 let pickedCategory = "scienceQuestions"
 let winner
 let quizArr = []
+let timerIntervalId
+let hr, min, sec, seconds = 0
+
 
 /*-------------Cached Element References----------*/
 
@@ -92,6 +95,7 @@ const cBtn = document.querySelector("#c-button")
 const dBtn = document.querySelector("#d-button")
 const sumOfCorrect = document.querySelector("sumCorrect")
 // const sumOfIncorrect = document.querySelector("sumIncorrect")
+const scienceCat = document.getElementById("sci")
 const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
 const quizContainer = document.querySelector('#quiz-container')
@@ -103,7 +107,10 @@ const nextQ = document.querySelector(".next")
 
 /*---------------Event Listeners---------*/
 
-
+scienceCat.addEventListener("click", createQuestion,
+{
+  once: true
+})
 
 aBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -193,6 +200,11 @@ function init(){
   render()
 }
 
+function startTimer() {
+  timerIntervalId = setInterval(tick, 750)
+}
+
+function renderTimer()
 function createQuestion(evt) {
   let object = getScienceQuestions()
   console.log(object)
