@@ -1,4 +1,3 @@
-# robot-trivia-in-space
 ## Robot Trivia in Space 
 ### Test Your Knowledge
 
