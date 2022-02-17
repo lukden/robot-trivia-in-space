@@ -137,7 +137,7 @@ aBtn.addEventListener("click", function (){
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-console.log(correctIncorrectPush(currentAnswer, correctAnswers))
+// console.log(correctIncorrectPush(currentAnswer, correctAnswers))
 
 })
 
@@ -164,7 +164,7 @@ bBtn.addEventListener("click", function (){
   // console.log('B')
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-  console.log(correctIncorrect(currentAnswer, correctAnswers))
+  // console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 })
 
@@ -173,14 +173,14 @@ bBtn.addEventListener("click", function (){
 cBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
   currentAnswer.push("C")
-  userAnswer.push("C")
+  // userAnswer.push("C")
   
   // console.log('C')
   console.log(currentAnswer)
   console.log(correctAnswers)
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-  console.log(correctIncorrect(currentAnswer, correctAnswers))
+  // console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 })
 
@@ -195,7 +195,7 @@ dBtn.addEventListener("click", function (){
   // console.log('D')
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-  console.log(correctIncorrect(currentAnswer, correctAnswers))
+  // console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 })
 
@@ -297,11 +297,19 @@ function correctIncorrectPush (currentAnswer, correctAnswers){{
     if (currentAnswer[i] !== correctAnswers[i]) {
       incorrectAns.push("I")
       console.log(incorrectAns)
-    }
+    } else {
     correctAns.push("C")
-  console.log(correctAns)
+    console.log(correctAns)
+    }
+    registerWin(correctAns)
 }}
 
+
+function registerWin (correctAns){
+  if (correctAns.length >= 10){
+    return alert("You won!")
+  }
+}
 // function sumOfCorrectIncorrect(currentAnswer, correctAnswers){
 //   for(let i=0; i<currentAnswer.length; i++)
 //   if (currentAnswer[i] !== correctAnswers[i]) {
@@ -395,9 +403,3 @@ function render(){
   })
   addDeleteBtnListeners()
 }
-
-  
-
-
-
-
