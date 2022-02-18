@@ -426,7 +426,7 @@ function appendQuestion(ques, idx) {
   let questionCard = document.createElement("div")
   questionCard.className = `card ${ques.text}`
   questionCard.innerHTML =
-  `<div>
+  `<div class ="qCard">
   <section class ="quiz">
     <p>Questions</p>
     <p id ="questions">${ques.text}</p>

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./assets/images/robot.png" type="image/png" sizes="128x128">
-  <title>Robot Trivia in Space</title>
+  <title>Trivia Bot</title>
   <link rel="stylesheet" href="./css/style.css">
   <audio id="audio" src="https://freesound.org/people/Breviceps/sounds/448080/"></audio>
   <script
@@ -15,9 +15,12 @@
     crossorigin="anonymous"
   ></script>
   <script src="./js/app.js" type="module"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans&family=Russo+One&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Robot Trivia in Space</h1>
+  <h1>Trivia Bot</h1>
   <h2>Answer the questions. Beat the clock.</h2>
   <h3>Choose a category!</h3>
   <p class="incorrect"></p>
@@ -38,19 +41,6 @@
     <p id="sumIncorrect"></p>
     <p id="timerEl"></p>
   </div>
-  <!-- <div>
-    <section class ="quiz">
-      <p></p>
-      <p id ="questions"></p>
-      <div id="choice">
-        <ul id="choices"> 
-        <li id="a-q"></li>
-        <li id="b-q"></li>
-        <li id="c-q"></li>
-        <li id="d-q"></li>
-      </ul>
-    </div> -->
-    <!-- </section> -->
     <div id="quiz-container"></div>
     <div class="player-choice">
       <button id="a-button">A</button>
