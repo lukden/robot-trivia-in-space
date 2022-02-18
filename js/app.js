@@ -213,7 +213,8 @@ const bBtn = document.querySelector("#b-button")
 const cBtn = document.querySelector("#c-button")
 const dBtn = document.querySelector("#d-button")
 const cor = document.querySelector(".correct")
-const sumOfCorrect = document.querySelector(".sumAnswers")
+const sumOfCorrect = document.getElementById("sumCorrect")
+const sumOfIncorrect = document.getElementById("sumIncorrect")
 const scienceCat = document.getElementById("sci")
 const popCultCat = document.getElementById("pop")
 const imagesCat = document.getElementById("img")
@@ -246,6 +247,8 @@ aBtn.addEventListener("click", function (){
   console.log(userAnswer)
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
+  renderCorrect(correctAns.length)
+  renderIncorrect(incorrectAns.length)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
   renderTimer()
 })
@@ -261,6 +264,8 @@ bBtn.addEventListener("click", function (){
   userAnswer.push("B")
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
+  renderCorrect(correctAns.length)
+  renderIncorrect(incorrectAns.length)
 })
 
 
@@ -272,6 +277,8 @@ cBtn.addEventListener("click", function (){
   console.log(correctAnswers)
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
+  renderCorrect(correctAns.length)
+  renderIncorrect(incorrectAns.length)
 })
 
 
@@ -283,6 +290,8 @@ dBtn.addEventListener("click", function (){
   userAnswer.push("D")
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
+  renderCorrect(correctAns.length)
+  renderIncorrect(incorrectAns.length)
 })
 
 
@@ -307,6 +316,8 @@ console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 init();
 function init(){
+  renderCorrect()
+  renderIncorrect()
   render()
 }
 
@@ -480,6 +491,7 @@ function addDeleteBtnListeners() {
 
 
 function render(){
+
   quizContainer.innerHTML = ""
   quizArr.forEach((ques, idx) => {
     appendQuestion(ques, idx) 
@@ -488,6 +500,12 @@ function render(){
 }
 
 
+function renderCorrect() {
+sumOfCorrect.textContent = `Correct Answers: ${correctAns.length}`
+}
+function renderIncorrect() {
+sumOfIncorrect.textContent = `Incorrect Answers: ${incorrectAns.length}`
+}
 
 renderTimer()
 timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
