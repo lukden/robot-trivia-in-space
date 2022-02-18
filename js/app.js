@@ -1,7 +1,6 @@
 // /*-----------Constants----------*/
 
-
-
+const audio = new Audio("../assets/images/pop.wav")
 const scienceQuestions = [
   {
     question: "Which planet is the 3rd closest to the sun?",
@@ -72,72 +71,72 @@ const scienceQuestions = [
     correctAnswer: "D",
   },
   {
-    question: "quesbooottiowne ",
-    choices: ["Maoi nwrs",
-    "wvnd",
-    "wnvdk",
-    "wvndjk",
+    question: "Which continent is the only on earth with no active volcanoes? ",
+    choices: ["Australia",
+    "North America",
+    "Asia",
+    "Africa",
     ],
-    correctAnswer: "D",
+    correctAnswer: "A",
   },
   {
-    question: "Scientists wnbooodjc rats how to ______. Which option does NOT acurately finsh the sentence?",
-    choices: ["wndic Doom II",
-    "wjncd tiny cars",
-    "Cook wncjd",
-    "wdnjc landmines",],
+    question: "What country produces the most oxygen on earth?",
+    choices: ["Brazil",
+    "Peru",
+    "Russia",
+    "Canada",],
     correctAnswer: "C",
   },
   {
-    question: "What is wncdj country booooof origin of the first living creature sent into space?",
+    question: "Which country covers the most time zones?",
     choices: 
     ["China",
-  "vjfnd States of America",
-  "Soviet Union",
-  "United Kingdom",],
+  "France",
+  "Russia",
+  "USA",],
     correctAnswer: "C",
   },
   {
-    question: "Dark wndjc matter makes uboop this percentage of all matter in the universe?",
-    choices: ["15%",
-      "27%",
-      "40%",
-      "53%",],
+    question: "What is the most visited country?",
+    choices: ["France",
+      "Japan",
+      "USA",
+      "U.K.",],
+    correctAnswer: "A",
+  },
+  {
+    question: "Which utensil used to be seen as sacrilegous",
+    choices: ["Spoon",
+    "Fork",
+    "Knife",
+    "Spork",
+    ],
     correctAnswer: "B",
   },
   {
-    question: "quev vovovovovosttiowne ",
-    choices: ["Maoi nwrs",
-    "wvnd",
-    "wnvdk",
-    "wvndjk",
-    ],
-    correctAnswer: "D",
-  },
-  {
-    question: "Scientists wndjc rats how to ______. Which option does NOT acurately finsh the sentence?",
-    choices: ["wndifovfovc Doom II",
-    "wjncd tiny cars",
-    "Cook wncjd",
-    "wdfjvnekfvnnjc landmines",],
-    correctAnswer: "C",
-  },
-  {
-    question: "What is wncdvfbfbj country of origin of the first living creature sent into space?",
-    choices: 
-    ["China",
-  "vjfnd States of America",
-  "Sovijnfdk fjdfbet Union",
-  "United Kingdom",],
-    correctAnswer: "C",
-  },
-  {
-    question: "Dark wndjcv mf or orfgbnrebi matter makes up this percentage of all matter in the universe?",
-    choices: ["15%",
-      "27%",
-      "40%",
-      "53%",],
+    question: "Which of these was a favorite pet during the Roman Empire?",
+    choices: ["Snakes",
+    "Ferrets",
+    "Mice",
+    "Antelope",],
     correctAnswer: "B",
+  },
+  {
+    question: "How tall was Napolean Bonapart?",
+    choices: 
+    ["5'6",
+  "4'9",
+  "5'10",
+  "5'2",],
+    correctAnswer: "A",
+  },
+  {
+    question: "What is the largest empire in human history?",
+    choices: ["Roman Empire",
+      "British Empire",
+      "Mongol Empire",
+      "Russian Empire",],
+    correctAnswer: "C",
   }
 ]
 
@@ -232,7 +231,6 @@ const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
 const choicesArr = document.getElementById("choices")
 const nextQ = document.querySelector(".next")
-const audio = document.getElementById("audio")
 
 /*---------------Event Listeners---------*/
 
@@ -247,6 +245,7 @@ histCat.addEventListener("click", createHistQuestion)
 
 
 aBtn.addEventListener("click", function (){
+  audio.play()
   currentAnswer.pop(0)
 
   currentAnswer.push("A")
@@ -256,7 +255,7 @@ aBtn.addEventListener("click", function (){
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-
+  renderTimer()
 })
 
 
@@ -264,6 +263,7 @@ aBtn.addEventListener("click", function (){
 
 
 bBtn.addEventListener("click", function (){
+  audio.play()
   currentAnswer.pop(0)
   // correctAnswers.pop(0)
   currentAnswer.push("B")
@@ -278,6 +278,7 @@ bBtn.addEventListener("click", function (){
 
 
 cBtn.addEventListener("click", function (){
+  audio.play()
   currentAnswer.pop(0)
   currentAnswer.push("C")
 
@@ -291,6 +292,7 @@ cBtn.addEventListener("click", function (){
 
 
 dBtn.addEventListener("click", function (){
+  audio.play()
   currentAnswer.pop(0)
 
   currentAnswer.push("D")
@@ -336,12 +338,9 @@ function startTimer() {
 function tick(){
   seconds++
   // console.log(seconds)
-  render()
+  renderTimer()
 }
 
-function playClickSound(){
-  audio.play()
-}
 function renderTimer() {
   min = Math.floor(seconds / 60)
   hr = Math.floor(seconds / 3600)
@@ -355,6 +354,7 @@ function renderTimer() {
 }
 
 function createQuestion(evt) {
+  audio.play()
   currentCategory = 1
   let object = getScienceQuestions()
   console.log(object)
@@ -370,6 +370,7 @@ function createQuestion(evt) {
 }
 
 function createPopQuestion(evt) {
+  audio.play()
   currentCategory = 2
   let object = getPopQuestions()
   console.log(object)
@@ -384,6 +385,7 @@ function createPopQuestion(evt) {
 }
 
 function createImageQuestion(evt) {
+  audio.play()
   currentCategory = 3
   let object = getImageQuestions()
   console.log(object)
@@ -398,6 +400,7 @@ function createImageQuestion(evt) {
 }
 
 function createHistQuestion(evt) {
+  audio.play()
   currentCategory = 4
   let object = getHistQuestions()
   console.log(object)
@@ -508,13 +511,12 @@ function render(){
     appendQuestion(ques, idx) 
   })
   addDeleteBtnListeners()
-  renderTimer()
-  //   timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
-  // if (timerIntervalId) {
-  //   clearInterval(timerIntervalId)
-  // } else {
-  //   startTimer()
-  // }
 }
 
-
+renderTimer()
+timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
+if (timerIntervalId) {
+clearInterval(timerIntervalId)
+} else {
+startTimer()
+}
