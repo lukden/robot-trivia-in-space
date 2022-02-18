@@ -22,7 +22,7 @@ View the wireframe and pseudocode here: https://trello.com/b/CNyqLe9r/project-1
 
 1. Pick from 4 categories 
 2. Answer the multiple choice questions
-3. Answer 12/16 questions to pass the robot's test
+3. Answer 10/16 questions to pass the robot's test
 
 
 ## Screenshots 
