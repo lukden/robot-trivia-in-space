@@ -227,6 +227,7 @@ const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
 const choicesArr = document.getElementById("choices")
 const nextQ = document.querySelector(".next")
+const displayMessage = document.getElementById("displaymessage")
 
 
 /*---------------Event Listeners---------*/
@@ -428,7 +429,7 @@ function correctIncorrectPush (currentAnswer, correctAnswers){{
 
 function registerWin (correctAns){
   if (correctAns.length >= 10){
-    return alert("You won!")
+    displayMessage.textContent = "You won!"
   }
 }
 
