@@ -232,6 +232,7 @@ const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
 const choicesArr = document.getElementById("choices")
 const nextQ = document.querySelector(".next")
+const audio = document.getElementById("audio")
 
 /*---------------Event Listeners---------*/
 
@@ -255,7 +256,6 @@ aBtn.addEventListener("click", function (){
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-
 
 })
 
@@ -339,6 +339,9 @@ function tick(){
   render()
 }
 
+function playClickSound(){
+  audio.play()
+}
 function renderTimer() {
   min = Math.floor(seconds / 60)
   hr = Math.floor(seconds / 3600)
@@ -457,10 +460,12 @@ function appendQuestion(ques, idx) {
   <div class="player-choice">
 </div>
   <footer class="card-footer">
-  <button id="a-button">A</button>
-  <button id="b-button">B</button>
-  <button id="c-button">C</button>
-  <button id="d-button">D</button>
+  <div id="playAns">
+  <button class="a-button">A</button>
+  <button class="b-button">B</button>
+  <button class="c-button">C</button>
+  <button class="d-button">D</button>
+  </div>
   <button class="next" id="delete-btn-${idx}">Next Question</button>
 </footer>`
   quizContainer.appendChild(questionCard)
