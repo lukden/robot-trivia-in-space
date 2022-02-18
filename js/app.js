@@ -1,7 +1,6 @@
 // /*-----------Constants----------*/
 
 const audio = new Audio("../assets/images/pop.wav")
-// favicon.setAttribute("href", "/assets/images/PastedGraphic.png")
 const scienceQuestions = [
   {
     question: "Which planet is the 3rd closest to the sun?",
@@ -227,7 +226,7 @@ const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
 const choicesArr = document.getElementById("choices")
 const nextQ = document.querySelector(".next")
-const favicon = document.getElementById("#favicon")
+
 
 /*---------------Event Listeners---------*/
 
@@ -488,7 +487,7 @@ function render(){
   addDeleteBtnListeners()
 }
 
-// favicon.setAttribute("href", "/assets/images/PastedGraphic.png")
+
 
 renderTimer()
 timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
