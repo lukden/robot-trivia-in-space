@@ -27,7 +27,7 @@ View the wireframe and pseudocode here: https://trello.com/b/CNyqLe9r/project-1
 
 ## Screenshots 
 
-<img src ="https://i.imgur.com/eh0xY3J.jpg">
+<img src ="https://i.imgur.com/pckQjPe.jpg">
 
 
 ## Technologies Used

@@ -1,6 +1,7 @@
 // /*-----------Constants----------*/
 
 const audio = new Audio("../assets/images/pop.wav")
+// favicon.setAttribute("href", "/assets/images/PastedGraphic.png")
 const scienceQuestions = [
   {
     question: "Which planet is the 3rd closest to the sun?",
@@ -148,7 +149,7 @@ let currentCategory
 
 
 const result = scienceQuestions.map(questiony => ({ text: questiony.question, choices: questiony.choices, answers: questiony.correctAnswer}));
-// console.log(result)
+
 
 Array.prototype.values
 const iterator = result.values();
@@ -169,9 +170,9 @@ const sciQuestions = result.splice(0, 4)
 function getScienceQuestions() {
   return sciQuestions.pop()
 }
-console.log(result)
+
 const popQuest = result.splice(0, 4)
-console.log(popQuest)
+
 function getPopQuestions() {
   return popQuest.pop()
 }
@@ -181,7 +182,6 @@ function getImageQuestions() {
   return imageQuest.pop()
 }
 
-console.log(imageQuest)
 
 const histQuest = result.splice(0, 4)
 
@@ -189,7 +189,6 @@ function getHistQuestions() {
   return histQuest.pop()
 }
 
-console.log(histQuest)
 
 
 
@@ -200,8 +199,6 @@ console.log(histQuest)
 let userAnswer = []
 let rightAnswers = []
 let wrongAnswers = []
-let pickedCategory = "scienceQuestions"
-let winner
 let quizArr = []
 let timerIntervalId
 let hr, min, sec, seconds = 0
@@ -218,7 +215,6 @@ const cBtn = document.querySelector("#c-button")
 const dBtn = document.querySelector("#d-button")
 const cor = document.querySelector(".correct")
 const sumOfCorrect = document.querySelector(".sumAnswers")
-
 const scienceCat = document.getElementById("sci")
 const popCultCat = document.getElementById("pop")
 const imagesCat = document.getElementById("img")
@@ -231,14 +227,13 @@ const qs = document.getElementById('questions')
 const gameStatus = document.getElementById("game-status")
 const choicesArr = document.getElementById("choices")
 const nextQ = document.querySelector(".next")
+const favicon = document.getElementById("#favicon")
 
 /*---------------Event Listeners---------*/
 
 
 scienceCat.addEventListener("click", createQuestion)
-
 popCultCat.addEventListener("click", createPopQuestion)
-
 imagesCat.addEventListener("click", createImageQuestion)
 histCat.addEventListener("click", createHistQuestion)
 
@@ -247,11 +242,9 @@ histCat.addEventListener("click", createHistQuestion)
 aBtn.addEventListener("click", function (){
   audio.play()
   currentAnswer.pop(0)
-
   currentAnswer.push("A")
   userAnswer.push("A")
   console.log(userAnswer)
-
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
@@ -265,28 +258,21 @@ aBtn.addEventListener("click", function (){
 bBtn.addEventListener("click", function (){
   audio.play()
   currentAnswer.pop(0)
-  // correctAnswers.pop(0)
   currentAnswer.push("B")
   userAnswer.push("B")
-  // console.log('B')
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-
-
 })
- console.log(correctAnswers)
 
 
 cBtn.addEventListener("click", function (){
   audio.play()
   currentAnswer.pop(0)
   currentAnswer.push("C")
-
   console.log(currentAnswer)
   console.log(correctAnswers)
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-
 })
 
 
@@ -294,15 +280,10 @@ cBtn.addEventListener("click", function (){
 dBtn.addEventListener("click", function (){
   audio.play()
   currentAnswer.pop(0)
-
   currentAnswer.push("D")
   userAnswer.push("D")
-
-
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-
-
 })
 
 
@@ -327,7 +308,6 @@ console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 init();
 function init(){
-  // sumGuessCorrect.textContent = ""
   render()
 }
 
@@ -337,7 +317,6 @@ function startTimer() {
 
 function tick(){
   seconds++
-  // console.log(seconds)
   renderTimer()
 }
 
@@ -501,10 +480,6 @@ function addDeleteBtnListeners() {
 }
 
 
-
-
-
-
 function render(){
   quizContainer.innerHTML = ""
   quizArr.forEach((ques, idx) => {
@@ -512,6 +487,8 @@ function render(){
   })
   addDeleteBtnListeners()
 }
+
+// favicon.setAttribute("href", "/assets/images/PastedGraphic.png")
 
 renderTimer()
 timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
