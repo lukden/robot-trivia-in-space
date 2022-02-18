@@ -1,9 +1,6 @@
 // /*-----------Constants----------*/
 
-// import { getQuiz } from "../js-arrays/quiz.js"
 
-
-// var answers, correctAnswer, a, b, c, d
 
 const scienceQuestions = [
   {
@@ -39,22 +36,127 @@ const scienceQuestions = [
       "40%",
       "53%",],
     correctAnswer: "B",
+  },
+  {
+    question: "Which film series does not have four entries? ",
+    choices: ["Twilight",
+    "Die Hard",
+    "The Hunger Games",
+    "The Dirty Dozen",
+    ],
+    correctAnswer: "B",
+  },
+  {
+    question: "Which movie did Tom Hanks win an Oscar nomination for?",
+    choices: ["Saving Private Ryan",
+    "Forrest Gump",
+    "Cast Away",
+    "Big",],
+    correctAnswer: "B",
+  },
+  {
+    question: "This movie doesn't contain Nicolas Cage freaking out.",
+    choices: 
+    ["Honeymoon in Vegas",
+  "Willy's Wonderland",
+  "National Treasure",
+  "The Wicker Man",],
+    correctAnswer: "B",
+  },
+  {
+    question: "Which movie doesn't break the fourth wall?",
+    choices: ["Annie Hall",
+      "Deadpool",
+      "The Big Short",
+      "Avengers: Endgame",],
+    correctAnswer: "D",
+  },
+  {
+    question: "quesbooottiowne ",
+    choices: ["Maoi nwrs",
+    "wvnd",
+    "wnvdk",
+    "wvndjk",
+    ],
+    correctAnswer: "D",
+  },
+  {
+    question: "Scientists wnbooodjc rats how to ______. Which option does NOT acurately finsh the sentence?",
+    choices: ["wndic Doom II",
+    "wjncd tiny cars",
+    "Cook wncjd",
+    "wdnjc landmines",],
+    correctAnswer: "C",
+  },
+  {
+    question: "What is wncdj country booooof origin of the first living creature sent into space?",
+    choices: 
+    ["China",
+  "vjfnd States of America",
+  "Soviet Union",
+  "United Kingdom",],
+    correctAnswer: "C",
+  },
+  {
+    question: "Dark wndjc matter makes uboop this percentage of all matter in the universe?",
+    choices: ["15%",
+      "27%",
+      "40%",
+      "53%",],
+    correctAnswer: "B",
+  },
+  {
+    question: "quev vovovovovosttiowne ",
+    choices: ["Maoi nwrs",
+    "wvnd",
+    "wnvdk",
+    "wvndjk",
+    ],
+    correctAnswer: "D",
+  },
+  {
+    question: "Scientists wndjc rats how to ______. Which option does NOT acurately finsh the sentence?",
+    choices: ["wndifovfovc Doom II",
+    "wjncd tiny cars",
+    "Cook wncjd",
+    "wdfjvnekfvnnjc landmines",],
+    correctAnswer: "C",
+  },
+  {
+    question: "What is wncdvfbfbj country of origin of the first living creature sent into space?",
+    choices: 
+    ["China",
+  "vjfnd States of America",
+  "Sovijnfdk fjdfbet Union",
+  "United Kingdom",],
+    correctAnswer: "C",
+  },
+  {
+    question: "Dark wndjcv mf or orfgbnrebi matter makes up this percentage of all matter in the universe?",
+    choices: ["15%",
+      "27%",
+      "40%",
+      "53%",],
+    correctAnswer: "B",
   }
 ]
 
+
 let correctAnswers = []
 let currentAnswer = []
-// console.log(correctAnswers)
-// console.log(currentAnswer)
-// console.log(scienceQuestions)
+
+let currentCategory
+
+
 const result = scienceQuestions.map(questiony => ({ text: questiony.question, choices: questiony.choices, answers: questiony.correctAnswer}));
-console.log(result)
+// console.log(result)
 
 Array.prototype.values
 const iterator = result.values();
 for(const choices of iterator){
   console.log(choices)
 }
+
 
 for (let i = 0; i < scienceQuestions.length; i++){
   if (scienceQuestions[i] === null) {
@@ -63,11 +165,32 @@ for (let i = 0; i < scienceQuestions.length; i++){
   console.log(scienceQuestions)
 }
 
-function getScienceQuestions() {
-  return result[Math.floor(Math.random() * result.length)]
-}
-console.log(getScienceQuestions())
+const sciQuestions = result.splice(0, 4)
 
+function getScienceQuestions() {
+  return sciQuestions.pop()
+}
+console.log(result)
+const popQuest = result.splice(0, 4)
+console.log(popQuest)
+function getPopQuestions() {
+  return popQuest.pop()
+}
+const imageQuest = result.splice(0, 4)
+
+function getImageQuestions() {
+  return imageQuest.pop()
+}
+
+console.log(imageQuest)
+
+const histQuest = result.splice(0, 4)
+
+function getHistQuestions() {
+  return histQuest.pop()
+}
+
+console.log(histQuest)
 
 
 
@@ -75,7 +198,6 @@ console.log(getScienceQuestions())
 
 /*-------------Variables-----------*/
 
-// let win, lose, playerName, timer
 let userAnswer = []
 let rightAnswers = []
 let wrongAnswers = []
@@ -96,9 +218,12 @@ const bBtn = document.querySelector("#b-button")
 const cBtn = document.querySelector("#c-button")
 const dBtn = document.querySelector("#d-button")
 const cor = document.querySelector(".correct")
-const sumOfCorrect = document.querySelector("sumCorrect")
-// const sumOfIncorrect = document.querySelector("sumIncorrect")
+const sumOfCorrect = document.querySelector(".sumAnswers")
+
 const scienceCat = document.getElementById("sci")
+const popCultCat = document.getElementById("pop")
+const imagesCat = document.getElementById("img")
+const histCat = document.getElementById("hist")
 const submitBtn = document.getElementById('submit')
 const body = document.querySelector("body")
 const quizContainer = document.querySelector('#quiz-container')
@@ -110,51 +235,33 @@ const nextQ = document.querySelector(".next")
 
 /*---------------Event Listeners---------*/
 
-// scienceCat.addEventListener("click", startTimer, {
-//   once: true
-// })
-scienceCat.addEventListener("click", createQuestion,
-{
-  once: true
-})
 
-// function correctIncorrectPush (currentAnswer, correctAnswers){
-//   for(let i = 0; i<currentAnswer.length; i++)
-//     if (currentAnswer[i] !== correctAnswers[i]) {
-//       incorrectAns.push("I")
-//     }
-//     correctAns.push("C")
-//   }
+scienceCat.addEventListener("click", createQuestion)
+
+popCultCat.addEventListener("click", createPopQuestion)
+
+imagesCat.addEventListener("click", createImageQuestion)
+histCat.addEventListener("click", createHistQuestion)
+
+
 
 aBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
-  // correctAnswers.pop(0)
+
   currentAnswer.push("A")
   userAnswer.push("A")
   console.log(userAnswer)
-  console.log(userAnswer)
-  // console.log("A")
+
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
   console.log(correctIncorrect(currentAnswer, correctAnswers))
-// console.log(correctIncorrectPush(currentAnswer, correctAnswers))
+
 
 })
 
-// aBtn.addEventListener("click", function(currentAnswer, correctAnswers){{
-//   for(let i = 0; i<currentAnswer.length; i++)
-//     if (currentAnswer[i] !== correctAnswers[i]) {
-//       incorrectAns.push("I")
-//       console.log(incorrectAns)
-//     }
-//     correctAns.push("C")
-//   console.log(correctAns)
-// }}
-// )
 
-// aBtn.addEventListener("click", correctIncorrectPush)
 
-// console.log(wrongAnswers)
+
 
 bBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
@@ -164,46 +271,40 @@ bBtn.addEventListener("click", function (){
   // console.log('B')
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-  // console.log(correctIncorrect(currentAnswer, correctAnswers))
+
 
 })
+ console.log(correctAnswers)
 
-// bBtn.addEventListener("click", correctIncorrectPush)
 
 cBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
   currentAnswer.push("C")
-  // userAnswer.push("C")
-  
-  // console.log('C')
+
   console.log(currentAnswer)
   console.log(correctAnswers)
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-  // console.log(correctIncorrect(currentAnswer, correctAnswers))
 
 })
 
-// cBtn.addEventListener("click", correctIncorrectPush)
+
 
 dBtn.addEventListener("click", function (){
   currentAnswer.pop(0)
-  // correctAnswers.pop(0)
+
   currentAnswer.push("D")
   userAnswer.push("D")
 
-  // console.log('D')
+
   correctIncorrect(currentAnswer, correctAnswers)
   correctIncorrectPush(currentAnswer, correctAnswers)
-  // console.log(correctIncorrect(currentAnswer, correctAnswers))
+
 
 })
 
 
-// dBtn.addEventListener("click", correctIncorrectPush)
 
-
-// console.log(correctAnswers)
 
 submitBtn.addEventListener("click", () => {
   console.log(getScienceQuestions())
@@ -211,25 +312,13 @@ submitBtn.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", createQuestion)
 
-// submitBtn.addEventListener("click", function(){
-  // currentAnswer.push()
-// })
+
 
 submitBtn.addEventListener("click", () => {
 console.log(correctIncorrect(currentAnswer, correctAnswers))
 })
 
-// nextQ.addEventListener("click", createQuestion)
-// nextQ.addEventListener('click', function(currentAnswer, correctAnswers){
-//     for(let i = 0; i<currentAnswer.length; i++)
-//       if (currentAnswer[i] !== correctAnswers[i]) {
-//         correctAns.push("C")
-//       } else{
-//       incorrectAns.push("I")
-//     }
-//     console.log(correctAns)
-//     console.log(incorrectAns)
-// }
+
 
 
 /*-----------functions-------------*/
@@ -238,38 +327,76 @@ init();
 function init(){
   // sumGuessCorrect.textContent = ""
   render()
-  // timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
-  // if (timerIntervalId) {
-  //   clearInterval(timerIntervalId)
-  // } else {
-  //   startTimer()
-  // }
 }
 
-// function startTimer() {
-//   timerIntervalId = setInterval(tick, 10 00)
-// }
+function startTimer() {
+  timerIntervalId = setInterval(tick, 10)
+}
 
-// function tick(){
-//   seconds++
-//   console.log(seconds)
-//   renderTimer()
-// }
+function tick(){
+  seconds++
+  // console.log(seconds)
+  render()
+}
 
-// function renderTimer() {
-//   min = Math.floor(seconds / 60)
-//   hr = Math.floor(seconds / 3600)
-//   sec = min % 60
-//   hr = hr % 24
-//   if (sec < 10) {
-//     timerEl.innerText = `${min}:0${sec}`
-//   }else {
-//     timerEl.innerText = `${min}:${sec}`
-//   }
-// }
+function renderTimer() {
+  min = Math.floor(seconds / 60)
+  hr = Math.floor(seconds / 3600)
+  sec = min % 60
+  hr = hr % 24
+  if (sec < 10) {
+    timerEl.innerText = `${sec}`
+  }else {
+    timerEl.innerText = `${sec}`
+  }
+}
 
 function createQuestion(evt) {
+  currentCategory = 1
   let object = getScienceQuestions()
+  console.log(object)
+  let newQuestion = {
+    text: object.text,
+    choices: object.choices,
+    answers: object.correctAnswer
+  }
+  correctAnswers.splice(0, 1, object.answers)
+  // console.log(correctAnswers)
+  quizArr.push(newQuestion)
+  render()
+}
+
+function createPopQuestion(evt) {
+  currentCategory = 2
+  let object = getPopQuestions()
+  console.log(object)
+  let newQuestion = {
+    text: object.text,
+    choices: object.choices,
+    answers: object.correctAnswer
+  }
+  correctAnswers.splice(0, 1, object.answers)
+  quizArr.push(newQuestion)
+  render()
+}
+
+function createImageQuestion(evt) {
+  currentCategory = 3
+  let object = getImageQuestions()
+  console.log(object)
+  let newQuestion = {
+    text: object.text,
+    choices: object.choices,
+    answers: object.correctAnswer
+  }
+  correctAnswers.splice(0, 1, object.answers)
+  quizArr.push(newQuestion)
+  render()
+}
+
+function createHistQuestion(evt) {
+  currentCategory = 4
+  let object = getHistQuestions()
   console.log(object)
   const newQuestion = {
     text: object.text,
@@ -277,7 +404,6 @@ function createQuestion(evt) {
     answers: object.correctAnswer
   }
   correctAnswers.splice(0, 1, object.answers)
-  // console.log(correctAnswers)
   quizArr.push(newQuestion)
   render()
 }
@@ -310,29 +436,6 @@ function registerWin (correctAns){
     return alert("You won!")
   }
 }
-// function sumOfCorrectIncorrect(currentAnswer, correctAnswers){
-//   for(let i=0; i<currentAnswer.length; i++)
-//   if (currentAnswer[i] !== correctAnswers[i]) {
-//     return wrongAnswers.concat("1")
-//   }
-//     return rightAnswers.contact("1")
-// }
-// const overlap = [...currentAnswer, ...correctAnswers];
-// return overlap.filter(el => {
-//   return currentAnswer.includes(el) && correctAnswers.includes(el)
-// })
-// console.log(correctIncorrect(currentAnswer, correctAnswers))
-
-
-
-// const sumCorrectAnswers = (currentAnswer, correctAnswers) => {
-//   const overlap = [...currentAnswer, ...correctAnswers];
-//   return overlap.filter(el => {
-//     return currentAnswer.includes(el) && correctAnswers.includes(el)
-//   })
-// }
-// console.log(sumCorrectAnswers(currentAnswer, correctAnswers))
-
 
 
 function appendQuestion(ques, idx) {
@@ -358,7 +461,7 @@ function appendQuestion(ques, idx) {
   <button id="b-button">B</button>
   <button id="c-button">C</button>
   <button id="d-button">D</button>
-  <button class="next" type="button" id="delete-btn-${idx}">Next Question</button>
+  <button class="next" id="delete-btn-${idx}">Next Question</button>
 </footer>`
   quizContainer.appendChild(questionCard)
 }
@@ -376,30 +479,37 @@ function addDeleteBtnListeners() {
       deleteQuestionBtn.addEventListener("click", deleteQuestion)
     })
     deleteQuestionBtns.forEach(deleteQuestionBtn => {
-      deleteQuestionBtn.addEventListener("click", createQuestion)
-  })
+      if (currentCategory = 1) {
+        deleteQuestionBtn.addEventListener("click", createQuestion)
+      }else if (currentCategory = 2) {
+        deleteQuestionBtn.addEventListener("click", createPopQuestion)
+      }else if (currentCategory = 3) {
+        deleteQuestionBtn.addEventListener("click", createImageQuestion)
+      }else if (currentCategory = 4) {
+        deleteQuestionBtn.addEventListener("click", createHistQuestion)
+      }
+    })
+  }
 }
 
-}
 
-// function init() {
-//   quizArr = [null, null, null]
-//   winner = null
-//   currentQuestion = null
-//   gameStatus.textContent = "Choose a category to start!"
-//   render()
-// }
 
-// function winConditions(){
-//   if {
-//     checkAnswer(currentAnswer, correctAnswers)
-//   }
-// }
+
+
+
 function render(){
-
   quizContainer.innerHTML = ""
   quizArr.forEach((ques, idx) => {
     appendQuestion(ques, idx) 
   })
   addDeleteBtnListeners()
+  renderTimer()
+  //   timerEl.textContent = (timerEl.textContent === "Start") ? "Pause" : "Start"
+  // if (timerIntervalId) {
+  //   clearInterval(timerIntervalId)
+  // } else {
+  //   startTimer()
+  // }
 }
+
+
