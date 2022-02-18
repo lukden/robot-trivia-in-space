@@ -14,7 +14,7 @@ The original inspiration for the project was a CAPTCHA test. In the future, a ro
 
 ## Check out the game
 
-Click the link to view the game: https://lukden.github.io/robot-trivia-in-space/
+Click the link to view the game: https://nonstop-oven.surge.sh/
 
 View the wireframe and pseudocode here: https://trello.com/b/CNyqLe9r/project-1
 
