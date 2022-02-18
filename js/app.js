@@ -430,7 +430,7 @@ function correctIncorrectPush (currentAnswer, correctAnswers){{
 function registerWin (correctAns){
   if (correctAns.length >= 10){
     displayMessage.textContent = "You won!"
-  }
+  } 
 }
 
 
